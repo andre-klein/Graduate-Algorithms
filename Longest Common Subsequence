@@ -1,0 +1,21 @@
+Subproblem:
+Let L[i, j] = length of longest common subsequence s.t. 0 <= i, j <= n
+
+Base Case:
+L[i, 0] = L[0, j] = 0
+
+Recurrence:
+L[i, j] = max(L[i-1, j], L[i, j-1]) if a_i != a_j
+L[i, j] = 1 + L[i-1, j-1] if ai == a_j
+
+Pseudocode:
+for i = 0 to n:
+  L[i, 0] = 0
+  L[0, i] = 0
+
+for i = 1 to n:
+  for j = 1 to n:
+    if a_i == a_j:
+      L[i, j] = 1 + L[i-1, j-1]
+     else:
+      L[i, j] = max(L[i-1, j], L[i, j-1])
