@@ -1,0 +1,6 @@
+Subsequence: generally non-contiguous
+Substring: contiguous
+A contiguous subsequence is essentially a substring
+Big O is upper bound
+Big Omega is lower bound
+Big Theta is equality
