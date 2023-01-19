@@ -19,3 +19,5 @@ for i = 1 to n:
       L[i, j] = 1 + L[i-1, j-1]
      else:
       L[i, j] = max(L[i-1, j], L[i, j-1])
+
+Return L(n, n)
