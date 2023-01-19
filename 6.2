@@ -1,6 +1,6 @@
-# recurrence Let L[i] = min penalty to reach ai s.t. 0 <= i <= n
+# Subproblem Let L[i] = min penalty to reach ai s.t. 0 <= i <= n
 # Base case: L[0] = 0
-# subproblem: L[i] = minj([200 - ai + aj]^2 + L[j]) for 0 <= j < i <= n
+# Recurrence: L[i] = minj([200 - ai + aj]^2 + L[j]) for 0 <= j < i <= n
 # pseudocode:
 # L[0] = 0
 # for i = 1 to n:
