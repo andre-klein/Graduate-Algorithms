@@ -1,7 +1,7 @@
 # Pure DP solution
-# recurrence: Let L(i) = max profit up to index i s.t. 0 <= i <= n
+# Subproblem: Let L(i) = max profit up to index i s.t. 0 <= i <= n
 # base case: L[0] = 0
-# subproblem: L(i) = maxj(L[j] + pi, L[i-1])
+# Recurrence: L(i) = maxj(L[j] + pi, L[i-1])
 # pseudocode:
 # L[0] = 0
 # for i = 1 to n:
