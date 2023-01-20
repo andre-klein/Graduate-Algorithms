@@ -5,7 +5,7 @@ Base Case:
 L[i, 0] = L[0, j] = 0 for 0 <= i, j <= n
 
 Recurrence:
-L[i, j] = 1 + L[i-1, j-1] for 1 <= i, j <= n, ai == a_j, i != j
+L[i, j] = 1 + L[i-1, j-1] for 1 <= i, j <= n, ai = a_j, i != j
 L[i, j] = max(L[i-1, j], L[i, j-1]) otherwise
 
 Pseudocode:
