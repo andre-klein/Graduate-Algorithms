@@ -6,7 +6,7 @@ Let L[i] = max contiguous subsequence sum including ai s.t. 0 <= i <= n
 Base case: L[0] = 0
 
 Recurrence:
-L[i] = a_i + max(0, L[i-1])
+L[i] = a_i + max(0, L[i-1]) for 1 <= i <= n
 
 Pseudocode
 L[0] = 0
@@ -23,7 +23,7 @@ Time complexity is O(n)
 Solution 2:
 
 Recurrence:
-L[i] = max(0, L[i-1] + a_i)
+L[i] = max(0, L[i-1] + a_i) for 1 <= i <= n
 
 Pseudocode
 L[0] = 0
