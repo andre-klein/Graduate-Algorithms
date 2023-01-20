@@ -6,7 +6,7 @@ Base Case:
 K[0] = 0
 
 Recurrence:
-K[w] = max_i{K[i-1, w], K[i, w-wi] + vi): 1 <= i <= n, 1 <= w <= W, wi <= w}
+K[w] = max_i{K[w-wi] + vi): 1 <= i <= n, 1 <= w <= W, wi <= w}
 
 Pseudocode:
 for w = 0 to W: # O(W)
