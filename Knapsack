@@ -32,3 +32,7 @@ return K[n, W]
 
 Time complexity:
 O(n * W * (1 + 1)) = O(nW)
+
+Nota Bene:
+Knapsack is not polynomial in the input size
+It Log(W) bits to represenent W. Therefore, it is exponential in the input size.
