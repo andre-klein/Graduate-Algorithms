@@ -7,7 +7,7 @@ L[1] = a_1
 
 Recurrence:
 prev = i-1
-L[i] = max(L[i-1] + a_i, L[i-2] + a_i * a_prev) s.t. 0 <= i <= n
+L[i] = max(L[i-1] + a_i, L[i-2] + a_i * a_prev) s.t. 2 <= i <= n
 
 Pseudocode:
 L[0] = 0 # O(1)
@@ -16,5 +16,9 @@ for i = 1 to n: # O(n)
   L[i] = max(L[i-1] + ai, L[i-2] + a_i * a_prev) # O(1)
 return L[n] # O(1)
 
-Time complexity:
+Time Complexity:
 O(1) + O(n)*(O(1) + O(1)) = O(n)
+
+Space Complexity:
+O(n)
+Can be done with O(1) space because we only care about L[i-1] and L[i-2]
