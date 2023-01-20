@@ -1,0 +1,29 @@
+Subproblem:
+Let T(i,j) = min edit distance between x1x2...xi and y1y2...yj for i<=m and j<=n
+
+Base case:
+T(i,0)=i for i<=m
+T(0,j)=j for j<=n
+
+Recurrence:
+T(i,j) = min(T(i-1,j) + 1, T(i,j-1) + 1, T(i-1,j-1) + diff(i,j)) for i<=m and j<=n
+diff(a,b)=0 if a=b and 1 otherwise
+
+Pseudocode:
+for i = 0 to m:
+	T(i,0) = i
+
+for j = 0 to n:
+	T(0,j) = j
+
+for i = 1 to m:
+	for j = 1 to n:
+		if xi = yj:
+			T(i,j) = min(T(i-1,j) + 1, T(i,j-1) + 1, T(i-1,j-1))
+		else:
+			T(i,j) = min(T(i-1,j) + 1, T(i,j-1) + 1)
+
+return T(m,n)
+
+Time complexity:
+O(n*m)
