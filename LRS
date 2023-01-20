@@ -1,0 +1,29 @@
+Subproblem:
+Let L[i, j] = length of LRS between a1a2...ai in S and a1a2...aj in S s.t. 0 <= i, j <= n
+
+Base Case:
+L[i, 0] = L[0, j] = 0
+
+Recurrence:
+L[i, j] = 1 + L[i-1, j-1] if ai == a_j and i != j
+Else, L[i, j] = max(L[i-1, j], L[i, j-1])
+
+Pseudocode:
+for i = 0 to n:
+  L[i, 0] = 0
+  L[0, i] = 0
+
+for i = 1 to n: # O(n)
+  for j = 1 to n: # O(n)
+    if a_i = a_j and i != j: # O(1)
+      L[i, j] = 1 + L[i-1, j-1]
+    else: # O(1)
+      L[i, j] = max(L[i-1, j], L[i, j-1])
+
+Return L(n, n)
+
+Time complexity:
+O(n*n*(1+1)) = O(n^2)
+
+Space complexity:
+O(n^2)
