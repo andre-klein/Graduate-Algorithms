@@ -1,0 +1,34 @@
+Knapsack  repitition:
+Subproblem:
+Let K[i] = max knapsack val up to index i s.t. 0 <= i <= n
+
+***********************************************************************************************
+
+Knapsack without repitition:
+Subproblem:
+Let K[i, w] = max knapsack val using objects up to index i and weight up to b s.t. 0 <= i <= n and 0 <= w <= W
+
+Base Case:
+K[0, w] = K[i, 0] = 0 for 0 <= i <= n and 0 <= w <= W
+
+Recurrence:
+If wi <= w, K[i, w] = max(K[i-1, w], K[i-1, w-wi] + vi) for 1 <= i <= n and 1 <= w <= W
+Else, K[i, w] = K[i-1, w] for 1 <= i <= n and 1 <= w <= W and wi > w
+
+Pseudocode:
+for i = 0 to n:
+  K[i, 0] = 0
+
+for w = 1 to W:
+  K[0, w] = 0
+ 
+for i = 1 to n: # O(n)
+  for w = 1 to W: # O(W)
+    if wi > w: # O(1)
+      K[i, w] = K[i-1, w]
+    else: # O(1)
+      K[i, w] = max(K[i-1, w], K[i-1, w-wi] + vi)
+return K[n, W]
+
+Time complexity:
+O(n * W * (1 + 1)) = O(nW)
