@@ -17,7 +17,7 @@ for i = 1 to n:
   for j = 1 to n:
     if a_i == a_j:
       L[i, j] = 1 + L[i-1, j-1]
-     else:
+    else:
       L[i, j] = max(L[i-1, j], L[i, j-1])
 
 Return L(n, n)
