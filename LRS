@@ -2,11 +2,11 @@ Subproblem:
 Let L[i, j] = length of LRS between a1a2...ai in S and a1a2...aj in S s.t. 0 <= i, j <= n
 
 Base Case:
-L[i, 0] = L[0, j] = 0
+L[i, 0] = L[0, j] = 0 for 0 <= i, j <= n
 
 Recurrence:
-L[i, j] = 1 + L[i-1, j-1] if ai == a_j and i != j
-Else, L[i, j] = max(L[i-1, j], L[i, j-1])
+L[i, j] = 1 + L[i-1, j-1] for 1 <= i, j <= n, ai == a_j, i != j
+L[i, j] = max(L[i-1, j], L[i, j-1]) otherwise
 
 Pseudocode:
 for i = 0 to n:
