@@ -1,0 +1,19 @@
+Subproblem:
+Let L[i] = true if s[1..i] consitutes a valid sequence of words and false otherwise s.t. 0 <= i <= n 
+
+Base Case:
+L[0] = true
+
+Recurrence:
+L[i] = max_j(L[i-j] and dict(s[j+1...i])) s.t. 0 <= j < i <= n
+
+pseudocode:
+L[0] = true
+for i = 1 to n: # O(n)
+  L[i] = false
+  for j = 0 to i-1: # O(n)
+    L[i] = max(L[i], L[j] and dict(s[j+1...i]))
+return L[n]
+
+Time complexity:
+O(n*n) = O(n^2)
