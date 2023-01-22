@@ -1,0 +1,11 @@
+Subproblem:
+C[i, j] = set of values of string aj...ai s.t. i < j <= n
+
+Recurrence:
+C[i, j] = union[x*y for all x in C[i, m] and y in C[m+1, j]] for i <= m < j <= n
+
+Pseudocode:
+for j = 2 to n: # O(n)
+  for i = 1 to j-1: # O(n/2)
+    for m = i to j-1:
+      
