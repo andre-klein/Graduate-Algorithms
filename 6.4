@@ -5,7 +5,7 @@ Base Case:
 L[0] = true
 
 Recurrence:
-L[i] = max_j(L[i-j] and dict(s[j+1...i])) s.t. 0 <= j < i <= n
+L[i] = max_j(L[j] and dict(s[j+1...i])) s.t. 0 <= j < i <= n
 
 pseudocode:
 L[0] = true
