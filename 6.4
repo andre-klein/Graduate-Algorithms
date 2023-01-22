@@ -17,3 +17,8 @@ return L[n]
 
 Time complexity:
 O(n*n) = O(n^2)
+
+Please note that the longest word in a major dictionary is 45 characters long.
+The reality is that our algorithm can take O(n) if we know a max length for any word.
+In addition, we can optimize further by using "continue" in the loop. That is, no need to
+continue looping over j once L(i) = 1 (or True) and we just move to the next index
