@@ -1,0 +1,17 @@
+Let T(i) = number of ways to reach rock i<=n
+
+T(i) = 1 for i<=4, we give rene credit for being there and acknowledge that
+we can reach 1 through 4 in only one way by making small jumps
+T(i) = T(i-4) + T(i-1) for i>=5
+
+pseudocode
+
+for i = 1 to 4:
+	T(i) = 4
+
+for i = 5 to n:
+	T(i) = T(i-4) + T(i-1)
+
+return T(n)
+
+O(n)
