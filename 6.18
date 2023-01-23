@@ -1,0 +1,34 @@
+Subproblem:
+Let K(v,j) = True if v can be broken down by coins up to index j for v<=V and j<=n
+Otherwise, K(v,j) = False
+
+Base case:
+K(0,.) = K(.,0) = True
+
+Recurrence:
+For v<=V and j<=n, if vj<=v:
+K(v,j) = True if max{vj + K(v-vj, j-1), K(v,j-1)} = v
+Otherwise, K(v,j) = False
+In addition, if vj>v:
+K(v,j) = True if K(v,j-1) = v
+Otherwise, K(v,j) = False
+
+Pseudocode:
+
+for j = 0 to n:
+	K(0,j) = 0
+
+for v = 1 to V:
+	K(v,0) = 0
+
+for v = 1 to V:
+	for j = 1 to n:
+		if vi<=V:
+			K(v,j) = max(vj + K(v-vj, j-1), K(v,j-1))
+		else:
+			K(v,j) = K(v,j-1)
+
+return K(V,n) = V
+
+Time complexity:
+O(n*V)
