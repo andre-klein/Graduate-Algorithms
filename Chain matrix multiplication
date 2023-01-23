@@ -1,1 +1,25 @@
+Subproblem:
+C[i, j] = min cost of multiplying Ai x Ai+1 x ... x Aj for 1 <= i <= j <= n
 
+Base case:
+C[i, i] = 0 for 1 <= i <= n
+
+Recurrence:
+C[i, j] = min_l(m_i-1 x ml x mj + C[i,l] + C[l+1, j]) for 1 <= i <= l <= j-1 and j <= n
+
+Pseudocode:
+for i = 1 to n: # O(n)
+  C[i, i] = 0
+for s = 1 to n-1: # O(n)
+  for i = 1 to s-n: # O(n)
+    Let j = i + s
+    C[i, j] = infinity
+    for l = i to j-1: # O(n)
+      cur = m_i-1 x ml x mj + C[i,l] + C[l+1, j]
+      if cur < C[i, j]:
+        C[i, j] = cur
+
+return C[1, n]
+
+Time Complexity:
+O(n^3)
