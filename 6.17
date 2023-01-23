@@ -1,0 +1,23 @@
+Subproblem:
+Let K(v) = True if v can be broken down by coins up to index i for v <= V and i <= n.
+Otherwise, K(v) = False
+
+Base case:
+K(0) = True
+
+Recurrence:
+K(v) = True if max_i(vi + K(v-vi)) = v
+Otherwise, K(v) = False
+where v <= V and i <= n and vi <= v
+
+Pseudocode:
+for v = 0 to V: # O(V)
+	K(v) = 0
+	for i = 1 to n: # O(n)
+		if vi<=v:
+			K(v) = max(K(v), vi + K(v-vi))
+
+return K(V) = V
+
+Time complexity:
+O(n*V)
