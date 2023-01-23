@@ -1,11 +1,23 @@
 Subproblem:
-C[i, j] = set of values of string aj...ai s.t. i < j <= n
+C[i, j] = set of all possible multiplication outcomes starting at i and ending at j s.t. 1 <= i < j <= n
+
+Base case:
+C[i, i] = a_i for 1 <= i <= n
 
 Recurrence:
-C[i, j] = union[x*y for all x in C[i, m] and y in C[m+1, j]] for i <= m < j <= n
+C[i, j] = Union_l{xy: x in C[i,l] and y in C[l+1, j]} s.t. i <= l <= j-1 and 1 <= i < j <= n
 
 Pseudocode:
-for j = 2 to n: # O(n)
-  for i = 1 to j-1: # O(n/2)
-    for m = i to j-1:
-      
+for i = 1 to n: # O(n)
+  C[i, i] = a_i
+
+for s = 1 to n: # O(n)
+  for i = 1 to s-n: # O(n)
+    Let j = i + s
+    for l = i to j-1: # O(n)
+      C[i, j] = C[i,j] Union (outer(C[i, l], C[l+1, j])) # outer refers to outer product
+
+return (intersect(C[1,n], a) = a)
+
+Time complexity:
+O(n^3)
