@@ -1,0 +1,30 @@
+Let T(z,i) = min population of a subset of S[1, ..., i] that
+achieves at least vote z for i<=n and z<=Z
+If no subset achieves that vote, output infinity
+
+T(z,0) = infinity for all 1<=z<=Z
+T(0,i) = 0 for all 1<=i<=n
+T(0,0) = 0
+
+T(z,i) = min{T(z-vi,i-1) + pi, T(z,i-1) : vi<=z} for i<=n and z<=Z
+T(z,i) = min{pi, T(z,i-1) : vi>z} for i<=n and z<=Z
+
+pseudocode
+for i = 1 to n:
+	T(0,i) = 0
+
+for z = 1 to Z:
+	T(z,0) = infinity
+
+T(0,0) = 0
+
+for z = 1 to Z:
+	for i = 1 to n:
+		if vi<=z:
+			T(z,i) = min(T(z-vi,i-1) + pi, T(z,i-1))
+		else:
+			T(z,i) = min(pi, T(z,i-1))
+
+return T(Z,n)
+
+O(Z*n)
