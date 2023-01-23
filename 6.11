@@ -1,0 +1,29 @@
+Subproblem:
+Let L[i, j] = length of longest common subsequence in x1x2...xi and y1y2...yj s.t. 0 <= i <= n and  0 <= j <= m
+
+Base Case:
+L[i, 0] = L[0, j] = 0
+
+Recurrence:
+L[i, j] = max(L[i-1, j], L[i, j-1]) if a_i != a_j
+L[i, j] = 1 + L[i-1, j-1] if ai == a_j
+where 1 <= i <= n and  1 <= j <= m
+
+Pseudocode:
+for i = 0 to n: # O(n)
+	L(i,0) = 0
+
+for j = 0 to m: # O(m)
+	L(0,j) = 0
+
+for i = 1 to n: # O(n)
+  for j = 1 to m: # O(m)
+    if a_i == a_j:
+      L[i, j] = 1 + L[i-1, j-1]
+    else:
+      L[i, j] = max(L[i-1, j], L[i, j-1])
+
+Return L(n, m)
+
+Time complexity:
+O(n*m)
