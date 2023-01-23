@@ -1,0 +1,18 @@
+Let K(i) = min penalty to reach C_i for i<=n
+
+K(0) = 0
+K(i) = min_j{K(j)+pi : j<i<=n and ci<=300+cj}
+
+pseudocode
+
+K(0) = 0
+
+for i = 1 to K
+	K(i) = infinity
+	for j = 0 to i-1:
+		if ci<=300+cj:
+			K(i) = min(K(j)+pi, K(i))
+
+return K(n)
+
+O(n^2)
