@@ -1,14 +1,14 @@
 Subproblem:
-Let D(i,v) = length of shortest path from s to v using at most i edges for 0<=i<=n-1 and v in V
+Let D(i,v) = length of shortest path from s to v using at most i edges for 0 <= i <= n-1 and v in V
 
-Base case
+Base Case:
 D(0,s) = 0
-D(0,v) = infinity for v!=s
+D(0,v) = infinity for v != s
 
-Recurrence
+Recurrence:
 D(i,v) = min(D(i-1,v), min_y(D(i-1,y) + w(y,v))) for 1<=i<=n-1
 
-Pseudocode
+Pseudocode:
 
 D(0,s) = 0
 
