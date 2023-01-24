@@ -1,6 +1,11 @@
+Dynamic Programming:
 Subsequence: generally non-contiguous
 Substring: contiguous
 A contiguous subsequence is essentially a substring
 Big O is upper bound
 Big Omega is lower bound
 Big Theta is equality
+
+**********************************************************
+Path in Graph:
+A directed graph is more general than an undirected graph: we can replace edges with anti-parallel edges
