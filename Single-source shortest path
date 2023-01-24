@@ -1,5 +1,6 @@
 Subproblem:
-Let D(i,v) = length of shortest path from s to v using at most i edges for 0 <= i <= n-1 and v in V
+Let D(i,v) = length of shortest path from s to v using at most  i edges
+where 0 <= i <= n-1 and v in V
 
 Base Case:
 D(0,s) = 0
@@ -9,27 +10,23 @@ Recurrence:
 D(i,v) = min(D(i-1,v), min_y(D(i-1,y) + w(y,v))) for 1<=i<=n-1
 
 Pseudocode:
-
+for all v in V: # O(V)
+	D(0,v) = infinity
 D(0,s) = 0
 
-for all v in V:
-	if v = s:
-		D(0,s) = 0
-	else:
-		D(0,v) = infinity
+# O(V+E) time to look at adjacency list for reverse graph to construct edges out of v
 
-for i = 1 to n-1:
-	for all v in V:
+for i = 1 to n-1: # O(V)
+	for all v in V: # O(V)
 		D(i,v) = D(i-1,v)
-		//it takes O(n+m) time to look at adjacency list for reverse graph
-		//to construct edges out of v
-		for all (y,v) in E:
-			D(i,v) = min(D(i,v), D(i-1,y) + w(y,v))
+		for all y->v in E: # O(E/V)
+			if D(i,v) > DD(i-1,y) + w(y,v):
+				D(i,v) = D(i-1,y) + w(y,v)
 
 return D(n-1,.)
 
 Time Complexity:
-O(V*E) or O(n*m)
+O(V*E)
 
 **************************************************
 
