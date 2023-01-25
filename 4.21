@@ -1,0 +1,37 @@
+Subproblem:
+Let D(i,t) = -log(best conversion) from s to t using at most i intermediate currencies
+where 0 <= i <= n-1 and t in C
+
+Base Case:
+D(0,t) = infinity for all t in C
+
+Recurrence:
+D(i,t) = min(D(i-1,t), min_y(D(i-1,y) + w(y,t))) for 1 <= i <= n-1
+where w(y,t) = -log(r(y,t)) where r is the conversion rate from currency y to t
+
+Pseudocode:
+for all t in C: # O(C)
+	D(0,t) = infinity
+
+# O(C+E) time to look at adjacency list for reverse graph to construct edges out of C
+for i = 1 to n-1: # O(C)
+	for all t in C: # O(C)
+		D(i,t) = D(i-1,t)
+		for all {y->t} in E: # O(E/C)
+			if D(i,t) > D(i-1,y) + w(y,t):
+				D(i,v) = D(i-1,t) + w(y,t)
+
+return D(n-1,t)
+
+Time Complexity:
+O(C*E) + O(C+E) + O(C) = O(C*E)
+
+b)
+We simply add an additional loop in pseudocode to find a negative cycle
+
+for all t in C: # O(C)
+	for all {y->t} in E: # O(E/C)
+		if D(n-1,t) > D(n-1,y) + w(y,t):
+			return 'true'
+
+return 'false'
