@@ -1,19 +1,19 @@
 Subproblem
-Let D(i,s,t) = length of shortest path s->t using a subset of {1,...,i} as intermediate
-vetices for 0<=i<=n and 1<=s,t<=n
+Let D(i,s,t) = length of shortest path s->t using a subset of {1,...,i} as intermediate vetices
+where 0 <= i <= n and 1 <= s,t <= n
 
 Base case:
-D(0,s,t) = w(s,t) if s->t in E
-D(0,s,t) = infinity otherwise
+D(0,s,t) = w(s,t) if {s->t} in E
+D(0,s,t) = infinity, otherwise
 
 Recurrence:
-D(i,s,t) = min{D(i-1,s,t), D(i-1,s,i) + D(i-1,i,t)} for 0<=i<=n
+D(i,s,t) = min{D(i-1,s,t), D(i-1,s,i) + D(i-1,i,t)} for 0 <= i <=n
 
 Pseudocode:
 
 for s = 1 to n:
 	for t = 1 to n:
-		if (s,t) in E:
+		if {s->t} in E:
 			D(0,s,t) = w(s,t)
 		else:
 			D(0,s,t) = infinity
@@ -26,13 +26,12 @@ for i = 1 to n:
 return D(n,.,.)
 
 Time complexity:
-
 O(V^3) << O(V^2*E)
 
 *************************************************************************
-Naive approach using bellman takes O(V^2*E)~O(V^4) since E can be up to V^2
+Naive approach using Bellman takes O(V^2*E)~O(V^4) since E can be up to V^2
+Note that bellman-ford only finds negative weight cycles reachable from the start vertix
+
 How to detect negative weight cycles?
 If D(n,y,y) <= -1 for some y in V, we have a negative weight cycle
 (y,y) signifies any diagonal entry
-
-Note that bellman-ford only finds negative weight cycles reachable from the start vertix
