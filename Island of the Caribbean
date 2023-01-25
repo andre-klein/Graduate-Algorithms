@@ -23,7 +23,7 @@ for i = 1 to n-1: # O(V)
 			if D(i,v) > D(i-1,y) + c(y,v):
 				D(i,v) = D(i-1,y) + c(y,v)
         			if i >= minDays and D(i,v) < minTotal:
-          			minTotal = D(i,v)
+          				minTotal = D(i,v)
 
 return minTotal
 
