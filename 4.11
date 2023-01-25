@@ -1,0 +1,37 @@
+Subproblem
+Let D(i,s,t) = length of shortest path s->t using a subset of {1,...,i} as intermediate vetices
+where 0 <= i <= n and 1 <= s,t <= n
+
+Base case:
+D(0,s,t) = w(s,t) if {s->t} in E
+D(0,s,t) = infinity, otherwise
+
+Recurrence:
+D(i,s,t) = min{D(i-1,s,t), D(i-1,s,i) + D(i-1,i,t)} for 0 <= i <=n
+
+Pseudocode:
+
+for s = 1 to n:
+	for t = 1 to n:
+		if {s->t} in E:
+			D(0,s,t) = w(s,t)
+		else:
+			D(0,s,t) = infinity
+
+for i = 1 to n:
+	for s = 1 to n:
+		for t = 1 to n:
+			D(i,s,t) =  min(D(i-1,s,t), D(i-1,s,i) + D(i-1,i,t))
+
+cycle = infinity
+
+for j = 1 to n:
+	cycle = min(cycle, D(n,j,j))
+
+if cycle = infinity:
+	return 'acyclic'
+else:
+	return cycle
+
+Time complexity:
+O(V^3)
