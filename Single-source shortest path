@@ -20,7 +20,7 @@ for i = 1 to n-1: # O(V)
 	for all v in V: # O(V)
 		D(i,v) = D(i-1,v)
 		for all y->v in E: # O(E/V)
-			if D(i,v) > DD(i-1,y) + w(y,v):
+			if D(i,v) > D(i-1,y) + w(y,v):
 				D(i,v) = D(i-1,y) + w(y,v)
 
 return D(n-1,.)
