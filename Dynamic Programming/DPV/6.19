@@ -1,0 +1,23 @@
+Subproblem:
+Let L[v, k] = max val coins up to index i using k coins for 0 <= v <= V, i <= n, k <= K
+
+Base case:
+L[0, .] = L[., 0] = 0
+
+Recurrence:
+L[v, k] = max_i(vi + L[v-vi]) vi <= v and k <= K
+L[v, k] = 0, otherwise
+Where 1 <= v <= V and 1 <= i <= n
+
+Pseudocode:
+for v = 0 to V: # O(V)
+	for k = 0 to K: # O(K)
+    K[v, k] = 0
+    for i = 1 to n: # O(n)
+      if vi <= v:
+        K[v] = max(K[v], vi + K[v-vi])
+
+return K[V, K] = V
+
+Time complexity:
+O(n*V*K)
