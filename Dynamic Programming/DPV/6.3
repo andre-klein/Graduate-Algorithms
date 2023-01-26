@@ -39,8 +39,8 @@ for i = 1 to n: # O(n)
   L[i] = L[i-1]
   j = BinarySearch(i, k) # O(logn)
   # BinarySearch finds the last index satisfying the distance requirement
-    if m_i - m_j >= k and L[j] > L[i] - p_i:
-      L[i] = p_i + L[j]
+  if m_i - m_j >= k and L[j] > L[i] - p_i:
+    L[i] = p_i + L[j]
 
 return max_i(L[i]) # O(n)
 
