@@ -1,0 +1,48 @@
+Subproblem:
+Let L[i] = max profit using subset of hotels up to hotel m_i and including m_i s.t. 0 <= i <= n
+
+Base case:
+L[0] = 0
+
+Recurrence:
+L[i] = p_i + max_j{L[j]): m_i - m_j >= k}
+where j < i <= n
+
+Pseudocode:
+L[0] = 0
+for i = 1 to n: # O(n)
+  L[i] = p_i
+  for j = 1 to i - 1: # O(n)
+    if m_i - m_j >= k and L[j] > L[i] - p_i: 
+      L[i] = p_i + L[j]
+
+return max_i(L[i]) # O(n)
+
+Time complexity:
+O(n^2)
+**********************************************************************
+# This problem can be optimized with D&C
+Solution 2:
+Subproblem:
+Let L[i] = max profit using subset of hotels up to hotel m_i s.t. 0 <= i <= n
+
+Base case:
+L[0] = 0
+
+Recurrence:
+L[i] = max_j(L[i-1], p_i + L[j])), m_i - m_j >= k
+where j < i <= n
+
+Pseudocode:
+L[0] = 0
+for i = 1 to n: # O(n)
+  L[i] = L[i-1]
+  j = BinarySearch(i, k) # O(logn)
+  # BinarySearch finds the last index satisfying the distance requirement
+    if m_i - m_j >= k and L[j] > L[i] - p_i:
+      L[i] = p_i + L[j]
+
+return max_i(L[i]) # O(n)
+
+Time complexity:
+O(n*logn)
