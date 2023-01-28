@@ -1,5 +1,5 @@
 Subproblem:
-Let D(i,v) = length of cheapest path from city u to v using at most i edges
+Let D(i,v) = cost from city u to city v using exactly i edges (i.e. flights/days)
 where 0 <= i <= n-1 and v in V
 
 Base Case:
@@ -7,7 +7,7 @@ D(0,u) = 0
 D(0,v) = infinity for v != u
 
 Recurrence:
-D(i,v) = min(D(i-1,v), min_y(D(i-1,y) + c(y,v))) for 1 <= i <= n-1
+D(i,v) = min_y(D(i-1,y) + c(y,v)) for 1 <= i <= n-1
 
 Pseudocode:
 for all v in V: # O(V)
@@ -18,7 +18,7 @@ minTotal = infinity
 # O(V+E) time to look at adjacency list for reverse graph to construct edges out of v
 for i = 1 to n-1: # O(V)
 	for all v in V: # O(V)
-		D(i,v) = D(i-1,v)
+		D(i,v) = infinity
 		for all y->v in E: # O(E/V)
 			if D(i,v) > D(i-1,y) + c(y,v):
 				D(i,v) = D(i-1,y) + c(y,v)
