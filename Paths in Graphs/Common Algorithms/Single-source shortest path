@@ -14,7 +14,7 @@ for all v in V: # O(V)
 	D(0,v) = infinity
 D(0,s) = 0
 
-# O(V+E) time to look at adjacency list for reverse graph to construct edges out of v
+# O(V+E) time to look at adjacency list for reverse graph to construct edges into v
 
 for i = 1 to n-1: # O(V)
 	for all v in V: # O(V)
