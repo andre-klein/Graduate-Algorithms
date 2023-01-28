@@ -37,13 +37,15 @@ any finite number in A. This also hold if our array is empty (only has infinitie
 Running Time:
 STEPS 3-7 are binary search and have O(logn) time
 STEP 2 is O(logn) because we terminate our search upon encountering infinity.
-This is similar to traversing a BST in reverse (bottom -> top) since we start ~1 and terminate ~n
-and the height of the tree is logn.
-O(logn) + O(logn) = O(logn)
+This is similar to traversing a binary tree in reverse (bottom -> top) if we start ~1 and terminate ~n
+and the height of the tree is log(n).
+
 According to Master's theorem, we have T[n] = T[n/2] + O(1) for the recursion in STEPS 3-7.
 This is due to having 1 subproblem when we recurse having size n/2
 a = 1, b = 2, d = 0 => logb(a) => T[n] = O(n^d * logn) = O(logn)
-Again, in STEP 2 we are doing binary search in reverse to find n and we O(logn) as well.
+Again, in STEP 2 we are doing binary search in reverse to find n and we have O(log(n)) as well.
+
+O(logn) + O(logn) = O(logn)
 
 **********************
 
