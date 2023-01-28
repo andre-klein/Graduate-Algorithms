@@ -1,22 +1,27 @@
 Subproblem:
 Let D(i,v) = cost from city u to city v using exactly i edges (i.e. flights/days)
-where 0 <= i <= n-1 and v in V
+where 0 <= i <= n-1+minDays and v in V
 
 Base Case:
 D(0,u) = 0
 D(0,v) = infinity for v != u
 
 Recurrence:
-D(i,v) = min_y(D(i-1,y) + c(y,v)) for 1 <= i <= n-1
+D(i,v) = min_y(D(i-1,y) + c(y,v))
+where 1 <= i <= n-1+minDays, y in V
 
 Pseudocode:
+if u = destination and minDays = 0: # O(1)
+	return 0
+
 for all v in V: # O(V)
 	D(0,v) = infinity
-D(0,u) = 0
-minTotal = infinity
+
+D(0,u) = 0 # O(1)
+minTotal = infinity # O(1)
 
 # O(V+E) time to look at adjacency list for reverse graph to construct edges into v
-for i = 1 to n-1: # O(V)
+for i = 1 to n-1+minDays: # O(V)
 	for all v in V: # O(V)
 		D(i,v) = infinity
 		for all y->v in E: # O(E/V)
@@ -36,41 +41,35 @@ I am not currently in a study group
 
 
 **************************************************************************************************************************
-Coded solution:
-cost = [[20, 4, 2, 3],
-[8, 5, 6, 11],
-[5, 17, 9, 4],
-[15, 12, 15, 19]]
-n = 9
-minDays = 0
-minMatrix = [[], [], [], []] 
+cost = [[1000, 1, 1000, 1000],
+[1000, 1000, 1000, 1],
+[1, 1000, 1000, 1000],
+[1000, 1000, 1, 1000]]
 
-for start in range(0, 4) :
-    for destination in range(0, 4):
+n = len(cost)
 
-        D = [[], [], [], [], [], [], [], [], [], []]
-        for i in range(len(cost)):
-            D[0].append(float('inf'))
-        D[0][start] = 0
-
-        if start == destination and minDays == 0:
-            minMatrix[start].append(0)
-            continue
-        
-        minTotal = float('inf')
-        
-        for days in range(1,n):
-            for cities in range(0, 4):
-                D[days].append(float('inf'))
-                for source in range(0, 4):
-                    if D[days][cities] > D[days-1][source] + cost[source][cities]:
-                        D[days][cities] = D[days-1][source] + cost[source][cities]
-                        if minTotal > D[days][cities] and minDays <= days and cities == destination:
-                            minTotal = D[days][cities]
-
-        minMatrix[start].append(minTotal)
-        if start == 0 and destination == 1:
-            print(D)
-
-for row in minMatrix:
-    print(row)
+for minDays in range(n):
+    minMatrix = [[], [], [], []] 
+    for start in range(n) :
+        for destination in range(n):
+            D = [[]]
+            for i in range(len(cost)):
+                D[0].append(float('inf'))
+            D[0][start] = 0
+            if start == destination and minDays == 0:
+                minMatrix[start].append(0)
+                continue
+            minTotal = float('inf')
+            for days in range(1,n+minDays):
+                D.append([])
+                for cities in range(0, 4):
+                    D[days].append(float('inf'))
+                    for source in range(0, 4):
+                        if D[days][cities] > D[days-1][source] + cost[source][cities]:
+                            D[days][cities] = D[days-1][source] + cost[source][cities]
+                            if minTotal > D[days][cities] and minDays <= days and cities == destination:
+                                minTotal = D[days][cities]
+            minMatrix[start].append(minTotal)
+    print(minDays)
+    for row in minMatrix:
+        print(row)
