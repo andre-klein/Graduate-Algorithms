@@ -33,3 +33,44 @@ O(V) + O(V+E) + O(V*V*E/V) = O(V*E)
 *******************************
 
 I am not currently in a study group
+
+
+**************************************************************************************************************************
+Coded solution:
+cost = [[20, 4, 2, 3],
+[8, 5, 6, 11],
+[5, 17, 9, 4],
+[15, 12, 15, 19]]
+n = 9
+minDays = 0
+minMatrix = [[], [], [], []] 
+
+for start in range(0, 4) :
+    for destination in range(0, 4):
+
+        D = [[], [], [], [], [], [], [], [], [], []]
+        for i in range(len(cost)):
+            D[0].append(float('inf'))
+        D[0][start] = 0
+
+        if start == destination and minDays == 0:
+            minMatrix[start].append(0)
+            continue
+        
+        minTotal = float('inf')
+        
+        for days in range(1,n):
+            for cities in range(0, 4):
+                D[days].append(float('inf'))
+                for source in range(0, 4):
+                    if D[days][cities] > D[days-1][source] + cost[source][cities]:
+                        D[days][cities] = D[days-1][source] + cost[source][cities]
+                        if minTotal > D[days][cities] and minDays <= days and cities == destination:
+                            minTotal = D[days][cities]
+
+        minMatrix[start].append(minTotal)
+        if start == 0 and destination == 1:
+            print(D)
+
+for row in minMatrix:
+    print(row)
