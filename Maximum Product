@@ -1,0 +1,29 @@
+Subproblem:
+P[i, k] = max product using k multiplications on a substring ending at i where 1 <= i <= n and 1 <= k <= K
+
+Base case:
+P[i, 0] = a_1...a_i for 1 <= i <= n
+P[0, .] = 0
+
+Recurrence:
+P[i, k] = max_j(P[j, k-1] x a_j+1...a_i)
+where 2 <= i <= n and j < i and k <= K
+
+Pseudocode:
+for i = 1 to n: # O(n)
+  P[i, 0] = a_1...a_i
+
+for k = 0 to K:
+  P[0, k] = 0
+  
+for k = 1 to K: # O(n)
+  for i = 2 to n: # O(n)
+    for j = 1 to i-1: # O(n)
+      cur = P[j, k-1] x a_j+1...a_i
+      if cur > P[i, k]:
+        P[i, k] = cur
+
+return P[n, K]
+
+Time Complexity:
+O(k*n^2)
