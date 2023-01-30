@@ -1,0 +1,23 @@
+Subproblem:
+Let L[i] = min sum obtained by picking 1 every 4 using elements up to a_i s.t. 0 <= i <= n
+
+Base case:
+L[0] = 0
+L[i] = a_i for 1 <= i <= 4
+
+Recurrence:
+L[i] = a_i + min_i(L[i-1], L[i-2], L[i-3], L[i-4]) s.t. 5 <= i <= n
+
+Pseudocode:
+L[0] = 0 # O(1)
+
+for i = 1 to 4: # O(1)
+  L[i] = a_i
+
+for i = 5 to n: # O(n)
+  L[i] = a_i + min(L[i-1], L[i-2], L[i-3], L[i-4])
+
+return min(L[n], L[n-1], L[n-2], L[n-3])
+
+Time Complexity:
+O(n)
