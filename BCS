@@ -1,0 +1,21 @@
+Subproblem:
+Let L[i] = length of BCS which includes ai s.t. 0 <= i <= n
+
+Base case:
+L[0] = 0
+
+Recurrence:
+L[i] = 1 + max_j(L[j]) s.t. 0 <= j < i <= n and |ai - aj| < 73
+
+Pseudocode:
+L[0] = 0
+for i = 1 to n:
+  L[i] = 1
+  for j = 1 to i-1:
+    if |ai - aj| < 73:
+      L[i] = max[L[i], L[j] + 1)
+
+return max(L)
+
+Time complexity:
+O(n^2)
