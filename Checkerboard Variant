@@ -1,0 +1,25 @@
+Subproblem:
+Let T[i,j] = max value that can be achieved when reaching the ith row and jth column starting anywhere on the board s.t. 1 <= i,j <= n
+
+Base case:
+T[., 0] = T[0, .] = 0
+
+Recurrence:
+T[i, j] = max(T[i-1,j] + C[i,j], T[i, j-1]) + C[i,j], C[i,j])
+where 1 <= i,j <= n
+
+Pseudocode:
+T[0, 0] = 0
+
+for i = 1 to n: # O(n)
+  T[i, 0] = 0
+  T[0, i] = 0
+
+for i = 1 to n: # O(n)
+  for j = 1 to n: # O(n)
+    T[i, j] = max(T[i-1,j] + C[i,j], T[i, j-1]) + C[i,j], C[i,j])
+
+return T[n,n]
+
+Time complexity:
+O(n^2)
