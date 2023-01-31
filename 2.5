@@ -1,0 +1,30 @@
+Master's theorem:
+if d > logb(a) => O(n^d)
+if d = logb(a) => O(n^d * logn)
+if d < logb(a) => O(n ^ [logb(a)])
+
+a) T[n] = 2T[n/3] + 1
+a = 2
+b = 3
+d = 0
+= O(n ^ log3(2))
+
+b) T[n] = 5T[n/4] + n
+= O(n ^ log4(5))
+
+c) T[n] = 7T[n/7] + n
+= O(nlogn)
+
+d) T[n] = 9T[n/3] + n^2
+= O(n^2 * logn)
+
+e) T[n] = 8T[n/2] + n^3
+= O(n^3 * logn)
+
+f) T[n] = 49T[n/25] + n^[3/2]logn = 49[49T[n/(25^2)] + ((n/25)^[3/2])*log(n/25)] + n^[3/2]logn
+We stop when n/(25^i) = 1 which is our base case
+This would result in i = log25(n)
+
+Now, T[n] = (49^i)T[1] + log
+
+g) T[n] = T[n-1] + 2
