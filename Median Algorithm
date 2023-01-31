@@ -1,0 +1,42 @@
+Median algorithm
+
+Fast Select(A,k):
+Break A into G1,...,Gn/5 ====> O(n)
+Sort all Gi and let mi = median(Gi) ====> O(1) * n/5 = O(n)
+Let S = {m1,m2,...,mn/5}
+P = FastSelect(S,n/10) ====> T(n/5)
+Partition A into A<P, A=P, A>P ====> O(n)
+//The following three lines are T(7/10 * n)
+If k <= |A<P|: FastSelect(A<P,k)
+If k > |A<P| + |A=P|: FastSelect(A>P,k-|A<P|-|A=P|)
+Else: output P
+
+T(n) = T(7/10 * n) + T(n/5) + O(n) = O(n)
+
+Proof:
+1- 3n/10 are at most P => |A>P| <= 7n/10
+2- 3n/10 are at least P => |A<P| <= 7n/10
+3- Ignore |A=P| since we are taking worse case
+
+*****************************
+*****************************
+
+n/3?
+
+If we have n/3, we have n/3 groups of 3 elements
+1- 2n/6 are at most P => |A>P| <= 2n/3
+2- 2n/6 are at least P => |A<P| <= 2n/3
+
+T[n/3] + T[2n/3] + O(n) > O(n)
+
+n/7?
+
+If we have n/7, we have n/7 groups of 7 elements
+1- 4n/14 are at most P => |A>P| <= 5n/7
+2- 2n/7 are at least P => |A<P| <= 5n/7
+
+T[n/7] + T[5n/7] + O(n) = O(n)
+
+However, the constant term is much bigger because
+sorting and taking median of n/7 blocks of size 7 is more work than
+sorting and taking median of n/5 blocks of size 5
