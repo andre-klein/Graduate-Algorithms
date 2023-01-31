@@ -9,3 +9,21 @@ Big Theta is equality
 **********************************************************
 Path in Graph:
 A directed graph is more general than an undirected graph: we can replace edges with anti-parallel edges
+**********************************************************
+Master's Thorem
+
+If T(n) = aT[n/b] + O(n^d):
+
+d > logb(a) => T(n) = O(n^d)
+//here we simply ignore the recursion because combining dominates
+
+d = logb(a) => T(n) = O([n^d]logn)
+
+d < logb(a) => T(n) = O(n^logb(a))
+Here we ignore combining because recursion dominates
+**********************************************************
+w^[k + n/2] = -w^[k]
+w^[k] = -w^[k+n/2]
+
+w = exp(2*pi*i/n)
+z^n = 1
