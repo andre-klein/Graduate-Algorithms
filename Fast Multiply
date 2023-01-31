@@ -1,0 +1,12 @@
+Fast Multiply
+
+XL,XR = left and right n/2 bits
+YL,YR = left and right n/2 bits
+
+L = FastMultiply(XL,YL) which is all left
+R = FastMultiply(XR,YR) which is all right
+C = FastMultiply(XL+XR,YL+YR) which is adding Xs and Ys
+
+Z = [2^n][A] + [2^(n/2)][C-L-R] + R
+
+T(n) = 3T(n/2) + O(n) = O(n^(log3)) where log is log2
