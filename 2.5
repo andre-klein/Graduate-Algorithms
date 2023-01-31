@@ -46,6 +46,7 @@ h) T[n] = T[n-1] + n^c = O(n^(c+1))
 
 i) T[n] = T[n-1] + c^n = O(n*[c^n])
 
-j) T[n] = 2T(n-1) + 1 = 2^0 + 2^1 + 2^2 + ... + 2^(n-2) + T[1]
+j) T[n] = 2T(n-1) + 1 = 2^0 + 2^1 + 2^2 + ... + 2^(n-2) + T[1] = [2 ^ (n-1)] -1 +1 = 2^(n-1) = O(2^n)
 
-k)
+k) T[n] = T[sqrt(n)] + 1:
+See https://math.stackexchange.com/questions/538268/can-you-help-me-to-solve-the-recurrence-relation-tn-t-sqrt-n-1
