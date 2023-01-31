@@ -1,0 +1,23 @@
+Multiply X = 10011011 and Y = 10111010 using divide & conquer
+
+Equation:
+A = FastMultiply(XL,YL)
+B = FastMultiply(XR,YR)
+C = FastMultiply(XL+XR, YL+YR)
+Z = 2^n * A + 2^[n/2] * (C-A-B) + B
+
+Solution:
+XL = 1001 = 9
+XR = 1011 = 11
+
+YL = 1011 = 11
+YR = 1010 = 10
+
+A = 99
+B = 110
+C = 420
+n = 8
+
+Z = 256 * 99 + 16 * (420 - 110 - 99) + 110 = 28830
+
+Please note that this solution is only one layer of recursion but it's not easy to do more by hand.
