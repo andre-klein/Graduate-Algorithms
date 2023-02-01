@@ -1,0 +1,28 @@
+This is an application of the median algorithm
+
+STEP 1: Let count = k-1, curIdx = |S|/k, and res = []
+Where |S| indicates the cardinality or number of elements in the set S
+And res is an empty array used to store our output
+
+STEP 2: Use the median algorithm to identify the curIdx smallest element
+then append the array res with the value of the element.
+Here append implies appending the array from the right side.
+
+STEP 3: decrement count (i.e. count = count - 1)
+
+STEP 4: If count > 0 then let curIdx = curIdx + |S|/k and return to STEP 2
+
+STEP 5: Else => return res
+
+Correctness:
+STEP 1 identifies then number of elements in our output which is k-1
+as well as the size of each quantile |S|/k
+STEP 2 uses a blackbox median algorithm to find the curIdx smallest number
+We append res from the right side which guarantess an output sorted in increasing order
+STEPs 3 and 4 ensure that we stop at the k-1 element and add the quantile size to curIdx
+Considering that we have k subsets of the same size, there is no need for floor or ceil operations the above suffices.
+
+Time complexity:
+The median algorithm takes O(logn) time
+and will be executed k-1 times to identify the k-1 numbers in our output
+Therefore, in total, we have O(k*logn) time
