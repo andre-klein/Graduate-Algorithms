@@ -1,10 +1,9 @@
 S={-1, 2, 4, 1, 3, 0, 18, -3}, k = 8
-total = 0
-res = {1, -1, 3}
-frontier = [[4, 18], [2, 3], [0, 1], [-3, -1]]
+res = {}
+frontier = []
 G =   
-m = 2
-p = 3
+m = 
+p = 
 
 This is an application of the median algorithm.
 
@@ -20,24 +19,27 @@ STEP 4: Append the set res with p.
 
 STEP 5: If |res| = k-1, return res.
 
-STEP 6: Otherwise, use m to divide our array into two: G1 with values <= p and G2 with values > p
+STEP 6: If m = 1, return to STEP 2.
 
-STEP 7: Inject G1 then G2 into frontier (i.e. append our queue from the left side)
+STEP 7: Otherwise, use m to divide our array into two: G1 with values <= p and G2 with values > p
+
+STEP 8: Inject G1 then G2 into frontier (i.e. append our queue from the left side)
 Return to STEP 2
 
 Correctness:
 Assumpions:
-1- Our output set is unsorted
+1- Our output is a set and therefore can be unsorted
 Refer to https://edstem.org/us/courses/32662/discussion/2475185?comment=5683662
-2- Our input array S has distinct elements s.t. no two elements are of equal value.
-This can also be inferred from the fact that 
+2- Our input array S has distinct elements and therefore no two elements are of equal value.
+This can also be inferred from the fact that we can divide the Set S into k subsets of the same size.
 
-STEP 1 identifies then number of elements in our output which is k-1
-as well as the size of each quantile |S|/k
-STEP 2 uses a blackbox median algorithm to find the curIdx smallest number
-We append res from the right side which guarantess an output sorted in increasing order
-STEPs 3 and 4 ensure that we stop at the k-1 element and add the quantile size to curIdx
-Considering that we have k subsets of the same size, there is no need for floor or ceil operations the above suffices.
+We are technically implementing a BFS algorithm where the number of subproblems at each level is doubled but their size is halved.
+In STEP 3, there is no need to do floor division since we know that we can divide the set S into K subsets of equal size.
+In STEP 4, we are allowed to append res without having to worry about order based on assumption 1.
+In STEP 5, we terminate once we have identified all our k-1 elements (i.e. the size of the set res is equal to k-1) which is our desired result
+
+Why is this algorithm correct? we use a queue to ensure that we are applying FastSelect at each level before we continue to the next level.
+If we still haven't met our criterion |res| = k-1 at the end of our level, we continue to the next level.
 
 Time complexity:
 At every level L of our tree, we have 2^L nodes. The root node being at level 0.
