@@ -12,7 +12,7 @@ STEP 1: Let res = {} and frontier = a queue containing our array S
 STEP 2: Eject the last element from our frontier and call it G
 (i.e. pop our queue from the right side)
 
-STEP 3: Let m = |G|/2. Use the median algorithm (i.e. FastSelect) to identify p = mth smallest element.
+STEP 3: Let m = |G|/2. Use the median algorithm (i.e. FastSelect) to identify p = mth smallest element in G.
 Where |G| refers to the number of elements in G (or its cardinality/length)
 
 STEP 4: Append the set res with p.
@@ -33,13 +33,18 @@ Refer to https://edstem.org/us/courses/32662/discussion/2475185?comment=5683662
 2- Our input array S has distinct elements and therefore no two elements are of equal value.
 This can also be inferred from the fact that we can divide the Set S into k subsets of the same size.
 
-We are technically implementing a BFS algorithm where the number of subproblems at each level is doubled but their size is halved.
+We are technically implementing a BFS algorithm where the number of subproblems at each level is doubled but their size is halved (T[n] = 2T[n/2] + O(n))
+Note that we terminate our recursion early when we have acquired k-1 elements which results in O(n*log(k)) runtime
+
 In STEP 3, there is no need to do floor division since we know that we can divide the set S into K subsets of equal size.
 In STEP 4, we are allowed to append res without having to worry about order based on assumption 1.
 In STEP 5, we terminate once we have identified all our k-1 elements (i.e. the size of the set res is equal to k-1) which is our desired result
+In STEP 6, we ensure that in the edge case where k = n, we don't end up splitting an array of size 1.
 
-Why is this algorithm correct? we use a queue to ensure that we are applying FastSelect at each level before we continue to the next level.
-If we still haven't met our criterion |res| = k-1 at the end of our level, we continue to the next level.
+Why is this algorithm correct? we use a queue to ensure that we are applying FastSelect at each level in our tree before we continue to the next level.
+If we still haven't met our criterion, |res| = k-1, at the end of our level, we continue to the next level.
+Because k is a power of 2, we can safely assuem that we can finish traversing the level we're in in the tree.
+That is, we don't terminate halfway through a level, resulting in subsets that are of different sizes rather than the same size.
 
 Time complexity:
 At every level L of our tree, we have 2^L nodes. The root node being at level 0.
