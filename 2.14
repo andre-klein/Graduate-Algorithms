@@ -1,0 +1,7 @@
+Refer to PDF solution
+
+For correctness:
+1- Array is sorted and all duplicates must be consecutive
+2- If there are 2 duplicates, we remove the first.
+IF there are 3, we remove the first, then the second, but keep the third
+Therefore, we can handle any number of reptitions.
