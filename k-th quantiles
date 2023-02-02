@@ -5,7 +5,7 @@ STEP 3: Let m = |G|/2. Use the median algorithm (i.e. FastSelect) to identify p 
 STEP 4: Append the set res with p.
 STEP 5: If |res| = k-1, return res and terminate the run.
 STEP 6: Else If |res| >= k/2 then go to STEP 2
-STEP 7: Else, use m to divide our array into two: G1 with values <= p and G2 with values > p
+STEP 7: Else, use m to divide our array (or set) into two: G1 with values <= p and G2 with values > p
 Inject G1 then G2 into frontier (i.e. append our queue from the left side) then go to STEP 2
 This step takes O(|G|) time.
 
