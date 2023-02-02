@@ -27,7 +27,7 @@ Therefore, if we have more than k/2 - 1 elements, we are at the last level and n
 but we keep ejecting until we have k-1 elements and our frontier is empty.
 
 Why is this algorithm correct?
-We use a queue to ensure that we are applying FastSelect at each level in our tree before we continue to the next level.
+We use a queue to ensure that we are applying FastSelect at each level in our tree (on individual nodes) before we continue to the next level.
 This is guaranteed by our BFS approach. 
 If we still haven't met our criterion, |res| = k-1, at the end of our level, we continue to the next level.
 Because k is a power of 2, we can safely assume that we can finish traversing the level we're in.
