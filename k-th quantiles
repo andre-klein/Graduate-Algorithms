@@ -11,7 +11,7 @@ STEP 4: Append the set res with p.
 STEP 5: If |res| = k-1, return res (Return means end the entire execution of our algorithm).
 
 STEP 6: If m = 1, go to STEP 2.
-Nota Bene: we could also use the condition if |res| > ⌊(k-1)/2⌋ => STEP 2
+Nota Bene: we could also use the condition if |res| > ⌊(k-1)/2⌋ the go to STEP 2
 This saves a little bit of time since we don't have to generate the next level in the tree.
 However, I though this would make my algorithm more difficult to follow.
 Here ⌊x⌋ refers to the floor of x
