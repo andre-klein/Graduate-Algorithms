@@ -13,6 +13,7 @@ STEP 5: If |res| = k-1, return res.
 STEP 6: If m = 1, return to STEP 2.
 
 STEP 7: Otherwise, use m to divide our array into two: G1 with values <= p and G2 with values > p
+This step takes O(|G|) time.
 
 STEP 8: Inject G1 then G2 into frontier (i.e. append our queue from the left side)
 Return to STEP 2
@@ -41,6 +42,8 @@ Time complexity:
 At every level L of our tree, we have 2^L nodes. The root node being at level 0.
 Every node entails using the median of medians algorithm (i.e. FastSelect) on an array of size |S|/(2^L) 2^L times.
 This means it takes O(n) time to traverse every level in our tree (n*(2^L)/(2^L))
+It also taken O(n) time to generate the next level (refer to STEP 7).
+
 How many levels do we have?
 At the top level (root), we identify one of our k-1 numbers.
 At the next level, we identify two of our k-1 numbers.
