@@ -7,7 +7,7 @@ STEP 5: If |res| = k-1, return res and terminate the run.
 STEP 6: Else If |res| >= k/2 then go to STEP 2
 STEP 7: Else, use m to divide our array (or set) into two: G1 with values <= p and G2 with values > p
 Inject G1 then G2 into frontier (i.e. append our queue from the left side) then go to STEP 2
-This step takes O(|G|) time.
+This step takes O(|G|) time (and O(n) for the whole level)
 
 Correctness:
 
