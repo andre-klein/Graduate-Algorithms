@@ -36,7 +36,7 @@ That is, we don't terminate halfway through a level, resulting in subsets that a
 Time complexity:
 At every level L of our tree, we have 2^L nodes. The root node being at level 0.
 Every node entails using the median of medians algorithm (i.e. FastSelect) on an array (or set) of size |S|/(2^L) 2^L times.
-This means it takes O(n) time to traverse every level in our tree (n*(2^L)/(2^L))
+This means it takes O(n) time to traverse every level in our tree since n*(2^L)/(2^L) = n
 It also takes O(n) time to generate the next level (refer to STEP 7).
 
 How many levels do we have?
