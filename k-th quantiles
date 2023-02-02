@@ -23,7 +23,8 @@ In STEP 5, we terminate once we have identified all our k-1 elements
 (i.e. the size of the set res is equal to k-1) which is our desired result
 In STEP 6, we ensure that we don't create extra levels in our tree since the last level has k/2 elements.
 All previous levels combined have k/2 - 1 elements.
-Therefore, if we have more than k/2 - 1 elements, we are at the last level and no need to append our frontier anymore.
+Therefore, if we have more than k/2 - 1 elements, we are at the last level and no need to append our frontier anymore
+but we keep ejecting until we have k-1 elements and our frontier is empty.
 
 Why is this algorithm correct?
 We use a queue to ensure that we are applying FastSelect at each level in our tree before we continue to the next level.
