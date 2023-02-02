@@ -26,7 +26,8 @@ Refer to https://edstem.org/us/courses/32662/discussion/2475185?comment=5683662
 This can also be inferred from the fact that we can divide the Set S into k subsets of the same size.
 
 We are technically implementing a BFS algorithm where the number of subproblems at each level is doubled but their size is halved (T[n] = 2T[n/2] + O(n))
-Note that we terminate our recursion early when we have acquired k-1 elements which results in O(n*log(k)) runtime
+Note that we terminate our recursion early when we have acquired k-1 elements which results in O(n*log(k)) runtime instead of O(nlog(n)) time.
+In the worst case that k=n, our algorithm has a runtime of O(nlogn).
 
 In STEP 3, there is no need to do floor division since we know that we can divide the set S into K subsets of equal size.
 In STEP 4, we are allowed to append res without having to worry about order based on assumption 1.
