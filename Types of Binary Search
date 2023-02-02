@@ -1,0 +1,31 @@
+We can perform binary search as follows:
+STEP 1: Let start = 1 and end = n indicating our first and last element in our array
+STEP 2: If A[start] > 36 or A[end] < 36, return 'False'
+STEP 3: Let m = ⌊(start + end)/2)⌋
+STEP 4 If 36 > A[m] then start = m + 1 and we return to STEP 2
+STEP 5: Else If 36 < A[m] then end = m - 1 and we return to STEP 2
+STEP 7: Else -> we know 36 = A[m] and we return index m
+
+
+Correctness:
+* Array is sorted. Therefore, if the last element is smaller than 36,
+it means 36 is not there. Likewise, if the first element is larger than
+36, it means 36 is not there.
+* No need to floor m1 or m2 since |A| is a power of 2.
+
+Running time:
+This take T(n) = T(n/2) + O(1) = O(n^0 * logn) = O(logn)
+
+b)We have a sorted array in non-decreasing order
+
+We can perform binary search as follows:
+STEP 1: Let start = 1 and end = n indicating our first and last element in our array
+STEP 2: If A[start] != start, return start. Otherwise, if A[end] = end, return end + 1
+STEP 3: Let m = ⌊(start + end)/2)⌋
+STEP 5: If A[m] = m: start = m + 1. Otherwise, end = m. Return to STEP 1.
+
+Correctness:
+* Similar logic to part a
+
+Running time:
+This take T(n) = T(n/2) + O(1) = O(n^0 * logn) = O(logn)
