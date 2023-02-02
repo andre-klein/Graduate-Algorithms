@@ -1,20 +1,37 @@
-This is an application of the median algorithm
+S={-1, 2, 4, 1, 3, 0, 18, -3}, k = 8
+total = 0
+res = {1, -1, 3}
+frontier = [[4, 18], [2, 3], [0, 1], [-3, -1]]
+G =   
+m = 2
+p = 3
 
-STEP 1: Let count = k-1, curIdx = |S|/k, and res = []
-Where |S| indicates the cardinality or number of elements in the set S
-And res is an empty array used to store our output
+This is an application of the median algorithm.
 
-STEP 2: Use the median algorithm to identify the curIdx smallest element
-then append the array res with the value of the element.
-Here append implies appending the array from the right side.
+STEP 1: Let res = {} and frontier = a queue containing our array S
 
-STEP 3: decrement count (i.e. count = count - 1)
+STEP 2: Eject the last element from our frontier and call it G
+(i.e. pop our queue from the right side)
 
-STEP 4: If count > 0 then let curIdx = curIdx + |S|/k and return to STEP 2
+STEP 3: Let m = |G|/2. Use the median algorithm (i.e. FastSelect) to identify p = mth smallest element.
+Where |G| refers to the number of elements in G (or its cardinality/length)
 
-STEP 5: Else => return res
+STEP 4: Append the set res with p.
+
+STEP 5: If |res| = k-1, return res.
+
+STEP 6: Otherwise, use m to divide our array into two: G1 with values <= p and G2 with values > p
+
+STEP 7: Inject G1 then G2 into frontier (i.e. append our queue from the left side)
+Return to STEP 2
 
 Correctness:
+Assumpions:
+1- Our output set is unsorted
+Refer to https://edstem.org/us/courses/32662/discussion/2475185?comment=5683662
+2- Our input array S has distinct elements s.t. no two elements are of equal value.
+This can also be inferred from the fact that 
+
 STEP 1 identifies then number of elements in our output which is k-1
 as well as the size of each quantile |S|/k
 STEP 2 uses a blackbox median algorithm to find the curIdx smallest number
@@ -23,6 +40,12 @@ STEPs 3 and 4 ensure that we stop at the k-1 element and add the quantile size t
 Considering that we have k subsets of the same size, there is no need for floor or ceil operations the above suffices.
 
 Time complexity:
-The median algorithm takes O(logn) time
-and will be executed k-1 times to identify the k-1 numbers in our output
-Therefore, in total, we have O(k*logn) time
+At every level L of our tree, we have 2^L nodes. The root node being at level 0.
+Every node entails using the median of medians algorithm (i.e. FastSelect) on an array of size |S|/(2^L) 2^L times.
+This means it takes O(n) time to traverse every level in our tree (n*(2^L)/(2^L))
+How many levels do we have?
+At the top level (root), we identify one of our k-1 numbers.
+At the next level, we identify two of our k-1 numbers.
+At the bottom level we identify k/2 numbers.
+It is evident that the height of the tree is log(k)
+Therefore, the total runtime is O(n*log(k))
