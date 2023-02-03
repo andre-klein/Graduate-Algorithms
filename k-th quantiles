@@ -45,3 +45,56 @@ At the next level, we identify two of our k-1 numbers.
 At the bottom level we identify k/2 numbers.
 It is evident that the height of the tree is log(k)
 Therefore, the total runtime is O(n*log(k))
+
+*****************************************************************************************************************
+
+Python implementation:
+from collections import deque
+
+def kthQuantiles(S, k):
+    res = set()
+    frontier = deque([S])
+    
+    while frontier:
+        G = frontier.pop()
+        m = len(G) / 2
+        p = fastSelect(G, m)
+        res.add(p)
+        if len(res) == k-1:
+            return res
+        elif len(res) >= k/2:
+            continue
+        else:
+            G1 = [x for x in G if x <= p]
+            G2 = [x for x in G if x > p]
+            frontier.appendleft(G1)
+            frontier.appendleft(G2)
+
+def fastSelect(A, k):
+    S = []
+    for i in range(0, len(A), 5):
+        if i+5 <= len(A):
+            S.append(sorted(A[i:i+5])[2])
+        else:
+            G, m = sorted(A[i:]), (len(A)-i)//2
+            if len(G) % 2 == 0:
+                S.append((G[m] + G[m-1])/2)
+            else:
+                S.append(G[m])
+
+    p = S[0] if len(S) == 1 else fastSelect(S, -(-len(S)//5))
+    smaller, larger = [], []
+
+    for num in A:
+        if num < p: smaller.append(num)
+        elif num > p: larger.append(num)
+
+    if k <= len(smaller):
+        return fastSelect(smaller, k)
+    if k > (len(A) - len(larger)):
+        return fastSelect(larger, k - len(A) + len(larger))
+    return p
+
+S = [-1, 2, 4, 1, 3, 0, 18, -3]
+k = 4
+print(kthQuantiles(S, k))
