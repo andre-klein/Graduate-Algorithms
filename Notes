@@ -23,7 +23,21 @@ d < logb(a) => T(n) = O(n^logb(a))
 Here we ignore combining because recursion dominates
 **********************************************************
 w^[k + n/2] = -w^[k]
-w^[k] = -w^[k+n/2]
+w^[k] = -w^[k+n/2] # This is really same expression as above
 
 w = exp(2*pi*i/n)
 z^n = 1
+
+A polynomial of degree d is determined by d + 1 points.
+coefficient representation: a0, a1, ..., ad
+value representation: A(x0), A(x1), ..., A(xd)
+
+Evaluation: coefficient representation -> value representation
+Interpolation: coefficient representation <- value representation
+
+Euler's formula:
+e^ix = cosx + isinx
+
+Multiplicative inverse:
+w_n^k * w_n^x = 1 => k = n-x
+**********************************************************
