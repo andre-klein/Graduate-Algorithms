@@ -5,7 +5,7 @@ We know that a polynomial can be represented as such:
 A(x) = sum_i(a_i * x^i)
 where we take the sum from i = 0 until i = n-1
 
-Try A(2) = a_0 * 2^0 + a_1 * 2^1 + a_2 * 2^2 + ... + a_n-1 * 2^(n-1) = a
+Try A(2) = a_0 * 2^0 + a_1 * 2^1 + a_2 * 2^2 + ... + a_n-1 * 2^(n-1) = a_n-1a_n-2...a_0 = a
 This is exactly equal to a (our representation works because we're merely using powers of 2 to shift bits).
 We can also represent A(x) in array form as follows: [a_0, a_1, ..., a_n-1]
 
