@@ -1,0 +1,47 @@
+a)
+We have a = a_n-1a_n-2...a_0 and we would like to find A(x) satisfying A(2) = a
+
+We know that a polynomial can be represented as such:
+A(x) = sum_i(a_i * x^i)
+where we take the sum from i = 0 until i = n-1
+
+Try A(2) = a_0 * 2^0 + a_1 * 2^1 + a_2 * 2^2 + ... + a_n-1 * 2^(n-1) = a
+This is exactly equal to a (our representation works because we're merely using powers of 2 to shift bits).
+We can also represent A(x) in array form as follows: [a_0, a_1, ..., a_n-1]
+
+Again, our answer is A(x) = sum_i(a_i * x^i) = a_0*x^0 + a_1*x^1 + a_2*x^2 + ... + a_n-1*x^n-1
+
+b) The multiplication result can be at most of degree 2n-2. We pad with 0s until 2n-1 (the nearest power of 2 >= 2n-1 is 2n)
+
+STEP 1: Let A = sum_i(a_i * x^i) = a_0*x^0 + a_1*x^1 + a_2*x^2 + ... + a_n-1*x^n-1 + 0*x^n + 0*x^n+1 + ... + 0*x^2n-1 s.t. A(2) = a
+This takes O(n) time
+
+STEP 2: Let B = sum_i(b_i * x^i) = b_0*x^0 + b_1*x^1 + b_2*x^2 + ... + b_n-1*x^n-1 + 0*x^n + 0*x^n+1 + ... + 0*x^2n-1 s.t. B(2) = b
+This takes O(n) time
+
+STEP 3: (r_0, r_1, r_2, ..., r_2n-1) = FFT(A, w_2n)
+This performs recursive calls to evalue A_even and A_odd at even powers of w and odd powers of w and combine them.
+This takes O(n*logn) time because there are logn recursive calls each taking O(n)
+
+STEP 4: (s_0, s_1, s_2, ..., s_2n-1) = FFT(B, w_2n)
+This performs recursive calls to evalue A_even and A_odd at even powers of w and odd powers of w and combine them.
+This takes O(n*logn) time because there are logn recursive calls each taking O(n)
+
+STEP 5: for j = 0 to 2n-1: t_j = r_j x s_j
+This takes O(n) time
+
+STEP 6: Take the inverse FFT of our product T = (1/2n) * FFT(T, (w_2n)^-1).
+This takes O(n*logn) time because there are logn recursive calls each taking O(n)
+
+STEP 7: Our inverse is the product C(x) = sum_i(c_i * x^i) = c_0*x^0 + c_1*x^1 + c_2*x^2 + ... + c_2n-1*x^2n-1
+Note that c_2n-1 = 0 since our polynomial (AxB) is of at most degree 2n-2
+
+STEP 8: Our desired result c = C(2) = c_0*2^0 + c_1*2^1 + c_2*2^2 + ... + c_2n-2*2^2n-2
+
+Correctness:
+
+
+Time complexity:
+FFT -> 2T[n/2] + O(n) = O(n*logn)
+IFFT -> 2T[n/2] + O(n) = O(n*logn)
+O(n) + O(n) + O(nlogn) + O(nlogn) + O(n) + O(nlogn) = O(nlogn)
