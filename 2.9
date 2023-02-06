@@ -1,0 +1,45 @@
+Practice with polynomial multiplication by FFT.
+a)  Suppose that you want to multiply the two polynomials x + 1 and x^2 + 1 using the FFT.
+Choose an appropriate power of two, find the FFT of the two sequences, multiply the results componentwise, and compute the inverse FFT to get the final result.
+
+[1, 1, 0, 0] * [1, 0, 1, 0]
+
+First let's do the FFT:
+FFT(1, 1, 0, 0)
+n= 4
+w = exp(2 * pi * j / n) = exp(2 * j*pi/2)
+if j is 0 => 1
+if j is 1 => i
+if j is 2 => -1
+if j is 3 => -i
+
+A(w_4^0) = A(1) = 1 + 1*(1^1) + 0(1^2) + 0(1^3) = 2
+A(w_4^1) = A(i) = 1 + 1*(i^1) + 0(i^2) + 0(i^3) = 1 + i
+A(w_4^2) = A(-1) = 1 + 1*(-1^1) + 0(-1^2) + 0(-1^3) = 0
+A(w_4^3) = A(-i) = 1 + 1*(-i^1) + 0(-i^2) + 0(-i^3) = 1 - i
+
+FFT(1, 0, 1, 0)
+n= 4
+w = exp(2 * pi * j / n) = exp(2 * j*pi/2)
+if j is 0 => 1
+if j is 1 => i
+if j is 2 => -1
+if j is 3 => -i
+
+A(w_4^0) = A(1) = 1 + 0*(1^1) + 1(1^2) + 0(1^3) = 2
+A(w_4^1) = A(i) = 1 + 0*(i^1) + 1(i^2) + 0(i^3) = 0
+A(w_4^2) = A(-1) = 1 + 0*(-1^1) + 1(-1^2) + 0(-1^3) = 2
+A(w_4^3) = A(-i) = 1 + 0*(-i^1) + 1(-i^2) + 0(-i^3) = 0
+
+IFFT(4, 0, 0, 0)
+if j is 0 => 1
+if j is 1 => -i
+if j is 2 => -1
+if j is 3 => i
+
+A(1) = 4 + 0*(1^1) + 0(1^2) + 0(1^3) = 4
+A(-i) = 4 + 0*(-i^1) + 0(-i^2) + 0(-i^3) = 4
+A(-1) = 4 + 0*(-1^1) + 0(-1^2) + 0(-1^3) = 4
+A(i) = 4 + 0*(i^1) + 0(i^2) + 0(i^3) = 4
+
+= (1, 1, 1, 1) = 1 + x + x^2 + x^3
