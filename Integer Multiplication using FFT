@@ -21,12 +21,10 @@ STEP 2: Let B = sum_i(b_i * x^i) = b_0*x^0 + b_1*x^1 + b_2*x^2 + ... + b_n-1*x^n
 This takes O(n) time
 
 STEP 3: (r_0, r_1, r_2, ..., r_2n-1) = FFT(A, w_2n)
-This performs recursive calls to evalue A_even and A_odd at even powers of w and odd powers of w and combine them.
-This takes O(n*logn) time because there are logn recursive calls each taking O(n)
+This performs recursive calls to evalue A_even and A_odd and takes O(n*logn) time because there are logn recursive calls each taking O(n)
 
 STEP 4: (s_0, s_1, s_2, ..., s_2n-1) = FFT(B, w_2n)
-This performs recursive calls to evalue A_even and A_odd at even powers of w and odd powers of w and combine them.
-This takes O(n*logn) time because there are logn recursive calls each taking O(n)
+This performs recursive calls to evalue A_even and A_odd and takes O(n*logn) time because there are logn recursive calls each taking O(n)
 
 STEP 5: for j = 0 to 2n-1: t_j = r_j * s_j
 This takes O(n) time
