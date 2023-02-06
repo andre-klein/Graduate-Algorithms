@@ -12,6 +12,7 @@ We can also represent A(x) in array form as follows: [a_0, a_1, ..., a_n-1]
 Again, our answer is A(x) = sum_i(a_i * x^i) = a_0*x^0 + a_1*x^1 + a_2*x^2 + ... + a_n-1*x^n-1
 
 b) The multiplication result can be at most of degree 2n-2. We pad with 0s until 2n-1 (the nearest power of 2 >= 2n-1 is 2n)
+Note to grader: the statement between parenthesis above pertains to the size of the polynomial rather than our last index.
 
 STEP 1: Let A = sum_i(a_i * x^i) = a_0*x^0 + a_1*x^1 + a_2*x^2 + ... + a_n-1*x^n-1 + 0*x^n + 0*x^n+1 + ... + 0*x^2n-1 s.t. A(2) = a
 This takes O(n) time
@@ -30,13 +31,13 @@ This takes O(n*logn) time because there are logn recursive calls each taking O(n
 STEP 5: for j = 0 to 2n-1: t_j = r_j x s_j
 This takes O(n) time
 
-STEP 6: Take the inverse FFT of our product T = (1/2n) * FFT(T, (w_2n)^-1).
+STEP 6: Take the inverse FFT of our product T => (1/(2n)) * FFT(T, (w_2n)^-1).
 This takes O(n*logn) time because there are logn recursive calls each taking O(n)
 
 STEP 7: Our inverse is the product C(x) = sum_i(c_i * x^i) = c_0*x^0 + c_1*x^1 + c_2*x^2 + ... + c_2n-1*x^2n-1
 Note that c_2n-1 = 0 since our polynomial (AxB) is of at most degree 2n-2
 
-STEP 8: Our desired result c = C(2) = c_0*2^0 + c_1*2^1 + c_2*2^2 + ... + c_2n-2*2^2n-2
+STEP 8: Our desired result is C(2) = c_0*2^0 + c_1*2^1 + c_2*2^2 + ... + c_2n-2*2^2n-2 = c_n-2c_n-1...c_0 = c
 
 Correctness:
 
