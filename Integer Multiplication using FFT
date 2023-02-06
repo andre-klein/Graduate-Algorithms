@@ -28,7 +28,7 @@ STEP 4: (s_0, s_1, s_2, ..., s_2n-1) = FFT(B, w_2n)
 This performs recursive calls to evalue A_even and A_odd at even powers of w and odd powers of w and combine them.
 This takes O(n*logn) time because there are logn recursive calls each taking O(n)
 
-STEP 5: for j = 0 to 2n-1: t_j = r_j x s_j
+STEP 5: for j = 0 to 2n-1: t_j = r_j * s_j
 This takes O(n) time
 
 STEP 6: Take the inverse FFT of our product T => (1/(2n)) * FFT(T, (w_2n)^-1).
@@ -40,7 +40,13 @@ Note that c_2n-1 = 0 since our polynomial (AxB) is of at most degree 2n-2
 STEP 8: Our desired result is C(2) = c_0*2^0 + c_1*2^1 + c_2*2^2 + ... + c_2n-2*2^2n-2 = c_n-2c_n-1...c_0 = c
 
 Correctness:
-
+This is essentially the FFT and IFFT algorithms in pages 64 and 68 of DPV
+However, the key thing in our solution is padding the polynomials A and B in STEPS 1 and 2
+Without doing so, we cannot evalue the correct result in the frequency domain (i.e. C(w))
+STEPS 3 and 4 are our FFT operations to obtain the polynomials R and S in the frequency domain
+STEP 5 is essentially a dot product of R and S to obtain T
+STEPS 6 and 7 involve taking the inverse FFT to obtain the time-domain representation
+STEP 8 is used to get our 2n-1 bit result c
 
 Time complexity:
 FFT -> 2T[n/2] + O(n) = O(n*logn)
