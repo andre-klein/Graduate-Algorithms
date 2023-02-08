@@ -1,0 +1,13 @@
+Step 1: Let V equal to an array containing our voters (i.e. N citizens)
+
+Step 2: Let A = first half of V and B = second half of V
+
+Step 3: Let T = [] (an empty array)
+
+Step 4: for i = 1 to |A|/2: if Agree(A[i], B[i]) == True, append T with A[i] and B[i]
+
+Step 5: If |T| = |V|, let T = A because this means all voters in A and B had agreed and we can drop one half of the voters
+
+Step 6: If |T| = 1, return that voter.
+
+Step 7: Else, Let V = T and return to Step 2
