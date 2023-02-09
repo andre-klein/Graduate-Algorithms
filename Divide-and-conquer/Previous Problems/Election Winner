@@ -1,13 +1,54 @@
 Step 1: Let V equal to an array containing our voters (i.e. N citizens)
 
-Step 2: Let A = first half of V and B = second half of V
+Step 2: If |V| = 1, return that voter.
 
-Step 3: Let T = [] (an empty array)
+Step 3: Let half = |V|//2
 
-Step 4: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i] and B[i]
+Step 4: Let A = half elements of V and B = next half elements of V
 
-Step 5: If |T| = |V|, let T = A because this means all voters in A and B had agreed and we can drop one half of the voters
+Step 5: Let T = all the remaining elements in V that didn't go into either A or B
+This is in case of odd number of elements
 
-Step 6: If |T| = 1, return that voter.
+Step 6: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i] and B[i]
 
-Step 7: Else, Let V = T and return to Step 2
+Step 7: If |T| = |V|, let T = A because this means all voters in A and B had agreed and we can drop one half of the voters
+
+Step 8: Else, Let V = T and return to Step 2
+
+*******************
+Python implementation:
+
+
+import itertools
+
+voters = itertools.combinations_with_replacement('ABC', 17)
+
+def electionWinner(testCase):
+    if len(testCase) == 1:
+        return testCase[0]
+    
+    T = []
+    half = len(testCase)//2
+    A = testCase[:half]
+    B = testCase[half:]
+    
+    if len(testCase) % 2 != 0:
+        B = testCase[half:-1]
+        T.append(testCase[-1])
+    
+    for i in range(len(A)):
+        if A[i] == B[i]:
+            T.append(A[i])
+            T.append(B[i])
+    
+    if len(testCase) == len(T):
+        return electionWinner(A)    
+    else:
+        return electionWinner(T)
+
+for testCase in voters:
+    argMax = max(testCase, key=testCase.count)
+    if testCase.count(argMax) > len(testCase)/2:
+        cur = electionWinner(testCase)
+        if argMax != cur:
+            print(testCase, argMax, cur)
