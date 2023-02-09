@@ -4,7 +4,7 @@ Step 2: Let A = first half of V and B = second half of V
 
 Step 3: Let T = [] (an empty array)
 
-Step 4: for i = 1 to |A|/2: if Agree(A[i], B[i]) == True, append T with A[i] and B[i]
+Step 4: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i] and B[i]
 
 Step 5: If |T| = |V|, let T = A because this means all voters in A and B had agreed and we can drop one half of the voters
 
