@@ -6,8 +6,8 @@ STEP 4: Let A = half elements of V and B = next half elements of V
 STEP 5: Create an empty array T
 STEP 6: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i]
 Step 7: If |T| > 0, Let V = T and return to Step 3
-STEP 9: If we didn't need to set aside the last element in STEP 2, return the single voter we have left in V.
-STEP 10: Else, we have two possibilities. Either V is empty and we return the voter we had set aside.
+STEP 8: If we didn't need to set aside the last element in STEP 2, return the single voter we have left in V.
+STEP 9: Else, we have two possibilities. Either V is empty and we return the voter we had set aside.
 Or V is not empty. In that case, we perform a linear scan twice to determine which voter is the
 majority voter (i.e. the majority agrees with).
 
