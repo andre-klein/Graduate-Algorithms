@@ -1,15 +1,13 @@
 Step 1: Let V equal to an array containing our voters (i.e. N citizens)
 STEP 2: If |V| mod 2 != 0, set aside the last element (i.e. remove it from V)
 STEP 3: If |V| = 1, jump to STEP 8.
-STEP 3: Let half = |V|//2
 STEP 4: Let A = half elements of V and B = next half elements of V
-STEP 5: Create an empty array T
-STEP 6: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i]
-Step 7: If |T| > 0, Let V = T and return to Step 3
-STEP 8: If we didn't need to set aside the last element in STEP 2, return the single voter we have left in V.
-STEP 9: Else, we have two possibilities. Either V is empty and we return the voter we had set aside.
-Or V is not empty. In that case, we perform a linear scan twice to determine which voter is the
-majority voter (i.e. the majority agrees with).
+STEP 5: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append an initially empty array T with A[i]
+Step 6: If |T| > 0, Let V = T and return to Step 3
+STEP 7: Else: return the voter we had set aside (because T is empty).
+STEP 8: If we had set aside a voter in STEP 2, perform a linear scan twice to determine if the voter we had set aside or the current voter in V
+is the majority voter (i.e. the majority agrees with).
+STEP 9: Else, return the only voter we have in V.
 
 *******************
 Python implementation:
