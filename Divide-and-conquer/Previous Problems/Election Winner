@@ -1,55 +1,44 @@
 Step 1: Let V equal to an array containing our voters (i.e. N citizens)
-
-Step 2: If |V| = 1, return that voter.
-
-Step 3: Let half = |V|//2
-
-Step 4: Let A = half elements of V and B = next half elements of V
-
-Step 5: Let T = all the remaining elements in V that didn't go into either A or B
-This is in case of odd number of elements
-
-Step 6: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i] and B[i]
-
-Step 7: If |T| = |V|, let T = A because this means all voters in A and B had agreed and we can drop one half of the voters
-Return to Step 2
-
-Step 8: Else, Let V = T and return to Step 2
+STEP 2: If |V| mod 2 != 0, set aside the last element (i.e. remove it from V)
+STEP 3: If |V| = 1, jump to STEP 8.
+STEP 3: Let half = |V|//2
+STEP 4: Let A = half elements of V and B = next half elements of V
+STEP 5: Create an empty array T
+STEP 6: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i]
+Step 7: If |T| > 0, Let V = T and return to Step 3
+STEP 9: If we didn't need to set aside the last element in STEP 2, return the single voter we have left in V.
+STEP 10: Else, we have two possibilities. Either V is empty and we return the voter we had set aside.
+Or V is not empty. In that case, we perform a linear scan twice to determine which voter is the
+majority voter (i.e. the majority agrees with).
 
 *******************
 Python implementation:
 
-
 import itertools
-
-voters = itertools.combinations_with_replacement('ABC', 17)
+voters = itertools.combinations_with_replacement('ABC', 20)
 
 def electionWinner(testCase):
     if len(testCase) == 1:
         return testCase[0]
-    
-    T = []
     half = len(testCase)//2
     A = testCase[:half]
-    B = testCase[half:]
-    
-    if len(testCase) % 2 != 0:
-        B = testCase[half:-1]
-        T.append(testCase[-1])
-    
-    for i in range(len(A)):
-        if A[i] == B[i]:
-            T.append(A[i])
-            T.append(B[i])
-    
-    if len(testCase) == len(T):
-        return electionWinner(A)    
-    else:
-        return electionWinner(T)
+    B = testCase[half:] if len(testCase) % 2 == 0 else testCase[half:-1]
+    T = [A[i] for i in range(len(A)) if A[i] == B[i]]
+    if not T:
+        return T
+    return electionWinner(T)
 
 for testCase in voters:
     argMax = max(testCase, key=testCase.count)
     if testCase.count(argMax) > len(testCase)/2:
         cur = electionWinner(testCase)
+        if len(testCase) % 2 != 0:
+            if not cur:
+                cur = testCase[-1]
+            elif cur != testCase[-1]:
+                c_1 = len([i for i in testCase if i == cur])
+                c_2 = len([j for j in testCase if j == testCase[-1]])
+                if c_2 > c_1:
+                    cur = testCase[-1]
         if argMax != cur:
             print(testCase, argMax, cur)
