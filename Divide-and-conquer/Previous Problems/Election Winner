@@ -12,6 +12,7 @@ This is in case of odd number of elements
 Step 6: for i = 1 to |A|: if Agree(A[i], B[i]) == True, append T with A[i] and B[i]
 
 Step 7: If |T| = |V|, let T = A because this means all voters in A and B had agreed and we can drop one half of the voters
+Return to Step 2
 
 Step 8: Else, Let V = T and return to Step 2
 
