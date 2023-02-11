@@ -1,0 +1,54 @@
+STEP 1: If the length of array m is 0, return the kth element in array n (and vice-versa).
+STEP 2: Let mid_n = |n|//2 and mid_m = |m|//2
+
+STEP 3:
+If mid_n + mid_m > k, go to STEP 6.
+If mid_n + mid_m < k, go to STEP 4.
+If mid_n + mid_m = k, go to STEP 8.
+
+STEP 4: If n[mid_n] > m[mid_m], we will recurse on the right half of m (excluding mid_m) and decrement k by mid_m
+STEP 5: If n[mid_n] <= m[mid_m], we will recurse on the right half of n (excluding mid_n) and decrement k by mid_n
+Return to STEP 1
+
+STEP 6: If n[mid_n] > m[mid_m], it means we can throw away the right half of n (n is reassigned as all elements of n up to n_mid_n-1)
+STEP 7: If n[mid_n] <= m[mid_m], we can throw away the right half of m and reassign m like we did to n in STEP 6
+Return to STEP 1
+
+STEP 8: If n[mid_n] > m[mid_m], it means we can throw away the right half of n (n is reassigned as all elements of n up to n_mid_n)
+STEP 9: If n[mid_n] <= m[mid_m], we can throw away the right half of m and reassign m like we did to n in STEP 8
+Return to STEP 1
+
+********************************************************
+import numpy as np
+n = list(np.random.randint(1, 1001, 10))
+n.sort()
+m = list(np.random.randint(1, 1001, 10))
+m.sort()
+
+def kthElement(n, m, k):
+    if len(n) == 0:
+        return m[k]
+    elif len(m) == 0:
+        return n[k]
+
+    mid_n = len(n)//2
+    mid_m = len(m)//2
+    if mid_n + mid_m < k: # In 1-indexing, this <= k
+        if n[mid_n] > m[mid_m]:
+            return kthElement(n, m[mid_m+1:], k - mid_m - 1) # -1 because of 0-indexing
+        else:
+            return kthElement(n[mid_n+1:], m, k - mid_n - 1)
+    else:
+        if n[mid_n] > m[mid_m]:
+            return kthElement(n[:mid_n], m, k)
+        else:
+            return kthElement(n, m[:mid_m], k)
+            
+temp = n + m
+k = 13
+temp.sort()
+print(temp)
+print(n)
+print(m)
+print(temp[k])
+print(kthElement(n, m, k))
