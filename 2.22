@@ -2,8 +2,8 @@ STEP 1: If the length of array m is 0, return the kth element in array n (and vi
 STEP 2: Let mid_n = |n|//2 and mid_m = |m|//2
 
 STEP 3:
-If mid_n + mid_m > k, go to STEP 6.
 If mid_n + mid_m < k, go to STEP 4.
+If mid_n + mid_m > k, go to STEP 6.
 If mid_n + mid_m = k, go to STEP 8.
 
 STEP 4: If n[mid_n] > m[mid_m], we will recurse on the right half of m (excluding mid_m) and decrement k by mid_m
