@@ -7,7 +7,7 @@ K[0,.] = K[.,0] = True
 
 Recurrence:
 K(v,j) = max(vj + K[v-vj, j-1], K[v,j-1]), vj <= v
-K(v,j) = 0, otherwise
+K(v,j) = K[v, j-1], otherwise
 Where 1 <= j <= n, 1 <= v <= V
 
 Pseudocode:
