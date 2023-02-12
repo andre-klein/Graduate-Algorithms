@@ -13,10 +13,6 @@ STEP 6: If n[mid_n] > m[mid_m], it means we can throw away the right half of n (
 STEP 7: If n[mid_n] <= m[mid_m], we can throw away the right half of m and reassign m like we did to n in STEP 6
 Return to STEP 1
 
-STEP 8: If n[mid_n] > m[mid_m], it means we can throw away the right half of n (n is reassigned as all elements of n up to n_mid_n)
-STEP 9: If n[mid_n] <= m[mid_m], we can throw away the right half of m and reassign m like we did to n in STEP 8
-Return to STEP 1
-
 ********************************************************
 import numpy as np
 n = list(np.random.randint(1, 1001, 10))
