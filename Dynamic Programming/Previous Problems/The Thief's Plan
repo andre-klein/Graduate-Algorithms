@@ -1,6 +1,6 @@
 Case 1: p = [$20, $100, $30].
 Case 2: p = [$40, $30, $10, $60].
-Can only do adjacent houses
+Cannot do adjacent houses
 
 ******************************************
 
