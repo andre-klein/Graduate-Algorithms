@@ -1,0 +1,24 @@
+First Graph:
+
+Result of DFS on G_R:
+       A  B  C   D  E   F  G   H  I  J
+Pre    1  2  6   9  3   8  13  11 12 7
+Post   5  3  19  10 4   17 14  16 15 18
+
+Ordered by Post: C J F H I G D A E B
+
+A) {C D F J} {G H I} {A} {E} {B}
+
+B) Source SCC have no incoming edges => {A}, {B}
+Sink SCC have no outgoing edges => {C D F J}
+
+D) We need to add edges from sink to source
+First we add an edge from sink to {E}
+Then we add an edge from sink to {B}
+
+Second Graph:
+A)
+
+B)
+
+D)
