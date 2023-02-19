@@ -32,7 +32,8 @@ STEP 3: If S is a sink SCC => Return True
 Else, return False
 
 Correctness:
-If S, the SCC containing the townhall, is a sink SCC. Then S has no outgoing edges and every vertex within an SCC is reachable from any other vertex.
+If S, the SCC containing the townhall, is a sink SCC,
+then S has no outgoing edges and every vertex within an SCC is reachable from any other vertex within the same SCC.
 That is, there is no path to a vertex from the townhall to another SCC.
 If that is not true, then there is a way to leave the townhall without being able to come back to its vertex.
 
