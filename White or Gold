@@ -1,0 +1,44 @@
+A)
+STEP 1: Create a copy of G with all the white edges discarded and call it G^Gold
+This STEP takes O(|E|) time if we delete edges and O(|V|+|E|) if we construct a new graph
+^ means superscript
+
+STEP 2: Create a copy of G with all the gold edges discarded and call it G^White
+Now we have two graphs with only white and gold edges.
+
+STEP 3: Run the explore algorithm for undirected graphs on the two graphs starting with vertex s
+
+STEP 4: If s and t are in the same connected component in either graph (G^Gold or G^White), return True.
+That is, we return True if explore finds t after we removed the edges of one color.
+Otherwise, return False
+
+Correctness:
+This algorithm is correct because a path between s and t exists iff s and t are in the same connected component.
+That is, explore(s) finds t.
+
+Time Complexity:
+O(|V| + |E|) to create a new graph or O(|E|) to just delete the edges
+This is done once for each color.
+O(|V| + |E|) for explore(s) on each graph to find t
+This is done once for each color
+O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|)= O(|V|+|E|)
+
+***************************************
+B)
+We'll be using G^Gold and G^White from STEP A
+STEP 1: Run the explore algorithm for undirected graph G^White on s and note all the vertices reachable from s
+STEP 2: Run the explore algorithm for undirected graph G^Gold on t and note all the vertices reachable from t
+STEP 3: If there is any common vertex, return True. Otherwise, return False.
+
+Correctness:
+What we are doing here is as follows. Find all the vertices we can reach from s using only white edges.
+Then, find if any of those vertices are reachable from t using gold edges.
+A path between s and t that satisfies the requirement of having white edges followed by gold edges
+exists iff those vertices exist in both of the resultant connected components in STEPS 1 & 2.
+
+Time Complexity:
+O(|V| + |E|) to create a new graph or O(|E|) to just delete the edges
+This is done once for each color.
+O(|V| + |E|) for explore on each graph starting from s and t
+This is done once for each color
+O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|)= O(|V|+|E|)
