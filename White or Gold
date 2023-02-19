@@ -26,8 +26,8 @@ O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|)= O(|V|+|E|)
 ***************************************
 B)
 We'll be using G^Gold and G^White from STEP A
-STEP 1: Run the explore algorithm for undirected graph G^White on s and note all the vertices reachable from s
-STEP 2: Run the explore algorithm for undirected graph G^Gold on t and note all the vertices reachable from t
+STEP 1: Run the explore algorithm for undirected graphs on G^White starting with s and note all the vertices reachable from s
+STEP 2: Run the explore algorithm for undirected graphs on G^Gold starting with t and note all the vertices reachable from t
 STEP 3: If there is any common vertex, return True. Otherwise, return False.
 
 Correctness:
