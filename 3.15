@@ -1,0 +1,42 @@
+A)
+STEP 1: Construct G = (V, E) s.t. the vertices are intersections and directed edges entail paths/streets between intersections.
+Our task is to find if there is a path between u to v for all u, v in V in linear time
+
+STEPS 2 -> 6 are the SCC algorithm
+
+STEP 2: Construct G^R
+STEP 3: Run DFS on G^R
+STEP 4: Order V by lower post #
+STEP 5: Run undirected components algorithm on G
+STEP 6: The SCC algorithm will return G^SCC = (V^SCC, E^SCC)
+
+STEP 7: If we have only one SCC in G^SCC, return True
+Otherwise, return False
+
+Correctness:
+Within an SCC all vertices can reach each other. This is not guaranteed between SCCs in the metagraph.
+If all the intersections are in a single SCC, it means we can reach every intersection from any other intersection.
+
+Time Complexity:
+The SCC algorithm takes O(n+m) time.
+It is compresed of two DFS runs
+Counting the number of SCC takes O(n) time (in the worst case that we have n SCCs).
+Total time complexity is O(n+m)
+
+B)
+STEP 1: We have G^SCC from part A
+
+STEP 2: Verify that the SCC S containing the townhall is a sink SCC and has no outgoing edges
+
+STEP 3: If S is a sink SCC => Return True
+Else, return False
+
+Correctness:
+If S, the SCC containing the townhall, is a sink SCC. Then S has no outgoing edges and every vertex within an SCC is reachable from any other vertex.
+That is, there is no path to a vertex from the townhall to another SCC.
+If that is not true, then there is a way to leave the townhall without being able to come back to its vertex.
+
+Time Complexity:
+SCC algorithm takes O(n+m) time.
+It also takes O(n+m) time to examine S and make sure there are no vertices within S that point to other SCCs (outgoing edges).
+O(n+m) + O(n+m) = O(n+m)
