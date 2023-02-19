@@ -1,0 +1,19 @@
+STEP 1: Let E^R = an empty adjacency list of length |V|
+# This step takes O(V)
+
+STEP 2: For all vertices u in V, examine the neighbors of u.
+
+STEP 3: For each neighbor v of u, add u as a neighbor of v.
+# STEPS 2 and 3 takes O(|V| + |E|) because we are examining all the edges and vertices once.
+
+STEP 4: Return E^R
+
+Correctness:
+We are guaranteed to go through each vertex u in V and all the outgoing edges of the vertices.
+This holds even if we don't have a connected graph.
+
+This is because graphs (not reverse graphs) are mapped via outgoing edges in the adjacency list representation.
+We are bound to reverse all the edges correctly by examining all the individual vertices.
+
+Time complexity:
+O(|V|) + O(|V| + |E|) = O(|V| + |E|)
