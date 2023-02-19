@@ -1,0 +1,38 @@
+A)
+* Model the graph problem s.t. the vertices represent the volume of liquid in containers.
+
+* Let the tuple (a1, a2, a3) contain the volume of liquid in containers S1, S2, S3
+Where S1 is the container with volume 10, S2 the container with volume 7, and S3 the container with volume 4.
+
+* The start vertex is (0, 7, 4) since S1 is empty in the beginning
+
+* The three containers combined will have 11 pints of water. That is, a_1 + a_2 + a_3 = 11
+
+* In addition, none of the containers can have more water than their volume. That is, 0 <= a_1 <= 10, 0 <= a_2 <= 7, and 0 <= a_3 <= 4
+
+* Note that the graph construction takes a lot more time than running DFS in part B.
+
+* The directed edges of the graph indicate possible state transitions. Therefore, only two vertices change during transitions.
+The 3rd being left the same since we're only pouring from container into another.
+
+* Let i and j indicate two different coordinates. Either b_i or b_j is 0 after the pouring.
+Or b_i or b_j are equal to the container volume (S_i or S_j).
+
+* Our test is to find if there is a path from vertex (0, 7, 4) to (*, 2, *) or (*, *, 2).
+
+By the way, in order to build this graph, we can have at most 6 outgoing edges by pouring from container 1 to 2 or 3.
+Or starting from 2 or starting from 3.
+
+B)
+
+STEP 1: We run explore for directed graphs with the graph G that we constructed in part A.
+STEP 2: Return true if we reach (*, 2, *) or (*, *, 2).
+STEP 3: Else return false.
+
+Correctness:
+Explore on directed graph is guaranteed to find all reachable path from (0, 7, 4).
+If explore finishes without finding (*, 2, *) or (*, *, 2), it means those vertices are not reachable from (0, 7, 4)
+and no sequence of pourings exists.
+
+Time complexity:
+Explore takes O(|V| + |E|)
