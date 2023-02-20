@@ -28,7 +28,7 @@ B)
 We'll be using G^Gold and G^White from STEP A
 STEP 1: Run the explore algorithm for undirected graphs on G^White starting with s and note all the vertices reachable from s
 STEP 2: Run the explore algorithm for undirected graphs on G^Gold starting with t and note all the vertices reachable from t
-STEP 3: If there is any common vertex, return True. Otherwise, return False.
+STEP 3: If there are any common vertices between STEP 1 and STEP 2, return True. Otherwise, return False.
 
 Correctness:
 What we are doing here is as follows. Find all the vertices we can reach from s using only white edges.
