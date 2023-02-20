@@ -41,4 +41,6 @@ O(|V| + |E|) to create a new graph or O(|E|) to just delete the edges
 This is done once for each color.
 O(|V| + |E|) for explore on each graph starting from s and t
 This is done once for each color
-O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|)= O(|V|+|E|)
+O(|V|) + O(|V|) to find common vertices. This can be found utilizing ccnum.
+No need for sorting. We can use an array of length |V|. Then do a linear scan while comparing indices.
+O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|) + O(|V|+|E|) + O(|V|) + O(|V|) = O(|V|+|E|)
