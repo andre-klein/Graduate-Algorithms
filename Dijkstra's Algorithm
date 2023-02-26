@@ -10,7 +10,8 @@ H = makequeue(V) takes O(|V|log|V|) time
 While loop takes O(|V|) time and then we loop at edges per vertex => O(|V| + |E|)
 Then for every edge, we do a decreasekey operation which takes log|V|
 Also, for every vertex, we have a deletemin which takes O(log|V|)
-Therefore, we have O((|V| + |E|) * log|V| + |V|log|V|) = O(|E|log|V|) = O(mlogn)
+Therefore, we have O((|V| + |E|) * log|V| + |V|log|V|) = O((m+n)logn)
+This running time can be simplified if strongly connected graph and is equal to O(mlogn)
 ******************************************************************************************
 What is the main idea for Dijkstra’s algorithm?
 Find shortest distance to nearest nodes then gradually expand our frontier.
