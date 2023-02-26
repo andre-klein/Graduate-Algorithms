@@ -1,0 +1,18 @@
+What is the input and output for Dijkstra’s algorithm?
+Input: A graph that is either directed or undirected with positive edge lengths and a source vertex
+Output: Distance to all other vertices (shortest path) from the source vertex
+This is done via a dist array and a prev array.
+******************************************************************************************
+What is the running time of Dijkstra’s algorithm using min-heap (aka priority queue) data structure?
+(Don’t worry about the Fibonacci heap implementation or running time using it.)
+First loop takes O(|V|)
+H = makequeue(V) takes O(|V|log|V|) time
+While loop takes O(|V|) time and then we loop at edges per vertex => O(|V| + |E|)
+Then for every edge, we do a decreasekey operation which takes log|V|
+Also, for every vertex, we have a deletemin which takes O(log|V|)
+Therefore, we have O((|V| + |E|) * log|V| + |V|log|V|) = O(|E|log|V|) = O(mlogn)
+******************************************************************************************
+What is the main idea for Dijkstra’s algorithm?
+Find shortest distance to nearest nodes then gradually expand our frontier.
+This works if we have positive edge weights.
+******************************************************************************************
