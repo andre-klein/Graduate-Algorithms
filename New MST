@@ -1,0 +1,16 @@
+Assume simple graph
+We have a graph G and MST T
+G` = G - (u,v)
+T = T1 + T2 + (u,v)
+E` = E - (u,v)
+
+********************************
+Algorithm:
+STEP 1: Let T1 and T2 be the two trees we have left after deleting the edge (u,v)
+We can find T1 by running explore algorithm for undirected graphs starting with u
+
+
+STEP 2: Let E` = E - (u,v) 
+
+Traverse the edges of E` and see if there is any edge between T1 and T2.
+How can we do that? We loop
