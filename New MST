@@ -1,16 +1,49 @@
-Assume simple graph
-We have a graph G and MST T
-G` = G - (u,v)
-T = T1 + T2 + (u,v)
-E` = E - (u,v)
-
-********************************
 Algorithm:
 STEP 1: Let T1 and T2 be the two trees we have left after deleting the edge (u,v)
-We can find T1 by running explore algorithm for undirected graphs starting with u
+We can find T1 by running explore algorithm for undirected graphs starting with u (on the tree T - (u,v)) and utilizing prev
+We can find T2 by running explore algorithm for undirected graphs starting with v (on the tree T - (u,v)) and utilizing prev
+This step takes O(|V| + |E|) time
 
+STEP 2: Let E` = E - (u,v) and G` = G - (u,v)
 
-STEP 2: Let E` = E - (u,v) 
+STEP 3: We do a linear scan of all the vertices in T1 and see if any of the vertices have edges to a different connected component (i.e. T2).
+Note/store all the edges that connect T1 to T2 (we can use ccnum)
+This step takes O(|V| + |E|) time
 
-Traverse the edges of E` and see if there is any edge between T1 and T2.
-How can we do that? We loop
+STEP 4: Choose the edge with the min weight in STEP 3. Let's call this edge e` = (u`, v`).
+
+STEP 5: Let T` = T1 + T2 + e`
+We just need to find u` in T1 and v` in T2 and connect them using the edge e`
+This STEP takes O(|V|)
+
+STEP 6: T` is our new MST
+
+Correctness:
+STEP 1 is correct because MST T is a tree and removing an edge in a tree disconnects the tree into two trees
+STEP 3 is correct because our graph is still connected (even after deleting the edge e)
+and therefore we must have an edge connecting vertices in T1 to T2
+STEP 5 requires a proof
+
+Proof of STEP 5:
+We know that T` is a tree. However, we do not know if it is an MST.
+Suppose T` is not an MST and suppose there is a different MST in G` called T``
+In order for T`` to be an MST and T` not to be an MST, T`` must have a weight smaller than T`.
+
+Case 1: T`` contains e` but differents minimum weight trees T1` and T2` spanning the same vertices in T1 and T2.
+If T1` or T2` have weights less than T1 and T2, then our original MST T wouldn't have been an MST and we have a contradition.
+
+Case 2: T`` has a different edge e``. Since e` is a min weight edge between vertices in T1 and T2,
+e`` must have at least the weight of e`.
+Suppose e`` connects u`` and v``. We know have a path between u`` and v`` using e` and another using e``.
+Let N = T`` - e`` + e`.
+If the weight of e`` is greater than e` then the weight of N is less than T`` and we have a contradition.
+
+We can also use the cut property to argue for the correctness of STEP 5.
+The question that remains, however, is whether we would have trees different from T1 and T2 connected by e`.
+For this, we can simply apply case 1 above.
+
+Time complexity:
+STEP 1 runs explore twice and takes O(|V| + |E|) time
+STEP 3 takes O(|V| + |E|) time since we just need to do a linear scan
+and check if any edge in T1 links to a vertex with different connected component number (ccnum)
+STEP 5 takes O(|V|) time since we just need to do a linear scan on the vertices and add the edge e` between u` and v`
