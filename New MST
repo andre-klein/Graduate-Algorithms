@@ -29,14 +29,14 @@ We know that T` is a tree. However, we do not know if it is an MST.
 Suppose T` is not an MST and suppose there is a different MST in G` called T``
 In order for T`` to be an MST and T` not to be an MST, T`` must have a weight smaller than T`.
 
-Case 1: T`` contains e` but differents minimum weight trees T1` and T2` spanning the same vertices in T1 and T2.
-If T1` or T2` have weights less than T1 and T2, then our original MST T wouldn't have been an MST and we have a contradition.
+Case 1: T`` contains e` but different minimum weight trees T1` and T2` spanning the same vertices in T1 and T2.
+If T1` or T2` have weights less than T1 and T2, then our original MST T wouldn't have been an MST and we have a contradiction.
 
 Case 2: T`` has a different edge e``. Since e` is a min weight edge between vertices in T1 and T2,
 e`` must have at least the weight of e`.
 Suppose e`` connects u`` and v``. We know have a path between u`` and v`` using e` and another using e``.
 Let N = T`` - e`` + e`.
-If the weight of e`` is greater than e` then the weight of N is less than T`` and we have a contradition.
+If the weight of e`` is greater than e` then the weight of N is less than T`` and we have a contradiction.
 
 We can also use the cut property to argue for the correctness of STEP 5.
 The question that remains, however, is whether we would have trees different from T1 and T2 connected by e`.
