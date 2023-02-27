@@ -4,7 +4,7 @@ We can find T1 by running explore algorithm for undirected graphs starting with 
 We can find T2 by running explore algorithm for undirected graphs starting with v (on the tree T - (u,v)) and utilizing prev
 This step takes O(|V| + |E|) time
 
-STEP 2: Let E` = E - (u,v) and G` = G - (u,v)
+STEP 2: Let E` = E - (u,v) and G` = (V,E`)
 
 STEP 3: We do a linear scan of all the vertices in T1 and see if any of the vertices have edges to a different connected component (i.e. T2).
 Note/store all the edges that connect T1 to T2 (we can use ccnum)
@@ -32,8 +32,8 @@ In order for T`` to be an MST and T` not to be an MST, T`` must have a weight sm
 Case 1: T`` contains e` but different minimum weight trees T1` and T2` spanning the same vertices in T1 and T2.
 If T1` or T2` have weights less than T1 and T2, then our original MST T wouldn't have been an MST and we have a contradiction.
 
-Case 2: T`` has a different edge e``. Since e` is a min weight edge between vertices in T1 and T2,
-e`` must have at least the weight of e`.
+Case 2: T`` has a different edge e``  connecting vertices in T1 and T2.
+Since e` is a min weight edge between vertices in T1 and T2, e`` must have at least the weight of e`.
 Suppose e`` connects u`` and v``. We know have a path between u`` and v`` using e` and another using e``.
 Let N = T`` - e`` + e`.
 If the weight of e`` is greater than e` then the weight of N is less than T`` and we have a contradiction.
@@ -44,8 +44,8 @@ For this, we can simply apply case 1 above.
 
 Time complexity:
 STEP 1 runs explore twice and takes O(|V| + |E|) time
-STEP 3 takes O(|V| + |E|) time since we just need to do a linear scan
-and check if any edge in T1 links to a vertex with different connected component number (ccnum)
+STEP 3 takes O(|V| + |E|) time since we just need to do a linear scan 
+and check if any vertex in T1 is linked to a vertex with different connected component number (ccnum)
 STEP 5 takes O(|V|) time since we just need to do a linear scan on the vertices and add the edge e` between u` and v`
 
 Total run time is O(|V| + |E|) + O(|V| + |E|) + O(|V|) = O(|V| + |E|)
