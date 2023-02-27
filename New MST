@@ -47,3 +47,5 @@ STEP 1 runs explore twice and takes O(|V| + |E|) time
 STEP 3 takes O(|V| + |E|) time since we just need to do a linear scan
 and check if any edge in T1 links to a vertex with different connected component number (ccnum)
 STEP 5 takes O(|V|) time since we just need to do a linear scan on the vertices and add the edge e` between u` and v`
+
+Total run time is O(|V| + |E|) + O(|V| + |E|) + O(|V|) = O(|V| + |E|)
