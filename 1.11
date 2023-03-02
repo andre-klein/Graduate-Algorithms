@@ -1,0 +1,23 @@
+N = 35
+P = 7
+Q = 5
+
+PHI(N) = (7-1)(5-1) = 24
+
+GCD(4,35) = 1
+GCD(9,35) = 1
+
+1536/24 = 64
+4824/24 = 201
+
+4^1536 = (4^24)^64 which is congruent to 1 mod 35
+9^4824 = (9^24)^201 which is congruent to 1 mod 35
+
+Therefore, we have a and b both congruent to congruent to 1 mod 35
+a = 35x + 1
+b = 35y + 1
+a - b = 35(x-y) + 1 - 1 = 35(x-y)
+Let z = x-y
+35z mod 35 = 0
+
+Therefore, the answer is.
