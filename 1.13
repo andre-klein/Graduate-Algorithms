@@ -1,0 +1,17 @@
+Find (5^30,000 - 6^123,456) mod 31
+
+31 is a prime number
+
+5^30 is congruent to 1 mod 31
+Let a = 5^30 => a^1000 is congruent to 1 mod 31
+Similarly, 6^30 is congruent to 1 mod 31
+
+6^123456 = 6^123450 * 6^6
+
+6^6 mod 31 can be solved as follows:
+6 mod 31 => 6
+36 mod 31 => 5
+25 mod 31 => 25
+5*25 mod 31 => 1
+
+Therfore, (5^30,000 - 6^123,456) mod 31 is 0
