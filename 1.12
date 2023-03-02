@@ -1,0 +1,10 @@
+What 2^2^2006 mod 3?
+
+We can use Fermat's Little Theroem:
+3 is prime
+
+z^3-1 is congruent to 1 mod 3
+Let a = z^3-1
+a is congruent to 1 mod 3
+
+a^k is also congruent to 1 mod 3
