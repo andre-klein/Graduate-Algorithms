@@ -1,0 +1,6 @@
+210 = 2*3*5*7
+588 = 2^2 * 3 * 7^2
+GCD(210,588) = 2*3*7 = 42
+
+Using Euclid's, we have the following:
+GCD(588,210) = GCD(210, 168) = GCD(168, 42) = GCD(42, 0) = 42
