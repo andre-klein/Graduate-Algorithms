@@ -1,0 +1,8 @@
+Calculate 2^125 mod 127
+
+2^126 is congruent to 1 mod 127
+This means 2 * 2^125 is congruent to 1 mod 127
+2 has an inverse mod 127 which is 2^125
+
+We can use extended Euclid to find inverse of 2 mod 127 but it is clear that 64 is that inverse.
+Therefore, 2^125 mod 127 is 64
