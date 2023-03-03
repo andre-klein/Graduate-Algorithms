@@ -1,0 +1,8 @@
+N = P*1
+Phi = P - 1
+de = K(P - 1) + 1 which is congruent to 1 mod P-1
+
+m_e = m^e mod P
+
+We know e and P, we want d
+We use extended Euclid to find inverse of e s.t. d*e is congruent to 1 mod P-1
