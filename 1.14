@@ -1,0 +1,12 @@
+It takes O(logn) time to find nth fib term. Using matrix exponentiation.
+
+We take intermediate results mod p which would result in intermediate results < p
+p is logp bits long
+
+Therefore, we have logn operations each taking logp * logp to compute.
+
+The final result is polylogarithmic
+O(logn*logp*logp) = O(logn * M(logp))
+
+We might be able to reduce further using a faster multiplication algorithm
+This would result in O(logn*logp*loglogp)
