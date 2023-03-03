@@ -1,0 +1,11 @@
+We want 17^17^17 mod 10
+
+10 = 2 * 5
+
+Using Euler's theorem 17^((5-1)(2-1)) mod 10 = 17^4 mod 10 is congruent to 1 mod 10
+Therefore, we have 17^(17^17 mod 4) mod 10
+I have mod 4 because multiples of 4 in the power cancel out
+
+Now, 17 mod 4 is congruent to 1 mod 4
+
+Therefore, 17 mod 10 = 7
