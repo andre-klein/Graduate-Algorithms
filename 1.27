@@ -1,0 +1,13 @@
+17*23 = 391
+
+a)
+phi = (p-1)(q-1) = 16*22 = 352
+
+de = k*phi + 1 which is congruent to 1 mod phi
+e = 3
+d = 235
+
+b)
+We want 41^3 mod 391
+41^2 mod 391 = 117
+41 * 117 mod 391 = 105
