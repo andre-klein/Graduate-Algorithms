@@ -1,0 +1,3 @@
+Since a has inverse mod b
+gcd(a,b) = gcd(b,a) = 1
+Since gcd(b,a) = 1, be has inverse mod a Q.E.D
