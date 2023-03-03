@@ -2,7 +2,6 @@
 
 a)
 phi = (p-1)(q-1) = 16*22 = 352
-
 de = k*phi + 1 which is congruent to 1 mod phi
 e = 3
 d = 235
