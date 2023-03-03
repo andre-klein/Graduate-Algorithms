@@ -1,0 +1,5 @@
+Any element that doesn't have p in its prime factorization has an inverse mod p^n
+
+Consider the set {0, 1, ..., p^n - 1}
+
+((p-1)/p) * p^n have inverse mod p => p^n - p^(n-1) = [p - 1]*p^(n-1)
