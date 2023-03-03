@@ -1,0 +1,16 @@
+inverse of 20 mod 79 => clearly 4
+
+inverse of 3 mod 62 => clearly 21
+
+inverse of 21 mod 91:
+GCD(21, 91) = GCD(21, 7) = GCD(7, 0) = 7
+Inverse doesn't exist because GCD(91,21) != 1
+
+inverse of 5 mod 23:
+Use extended-euclid:
+
+Ext-Euclid(23, 5) => EE(5, 3) => EE(3, 2) => EE(2, 1) => EE(1, 0)
+(1, 2, -9) <= (1, -1, 2) <= (1, 1, -1) <= (1, 0, 1) <= (1, 1, 0)
+
+1 = 2*23 -9*5
+Therefore, the inverse of 5 mod 23 is 23-9 = 14
